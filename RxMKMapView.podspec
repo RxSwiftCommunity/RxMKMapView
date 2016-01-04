@@ -8,25 +8,27 @@
 
 Pod::Spec.new do |s|
   s.name             = "RxMKMapView"
-  s.version          = "1.0.2"
+  s.version          = "1.0.3"
   s.summary          = "Reactive wrapper for MKMapView `delegate`."
 
   s.description      = <<-DESC
 RxMKMapView is a Reactive wrapper for MKMapView `delegate`.
 
 ```swift
+
 let mapView = MKMapView(frame: view.frame)
 view.addSubview(mapView)
 
 mapView.rx_mapViewWillStartLoadingMap
 .subscribeNext {
-
+  print("rx_mapViewWillStartLoadingMap")
 }.addDisposableTo(disposeBag)
 
 mapView.rx_mapViewDidFinishLoadingMap
 .subscribeNext { _ in
-print("map loaded")
+  print("rx_mapViewDidFinishLoadingMap")
 }.addDisposableTo(disposeBag)
+
 ```
                        DESC
 

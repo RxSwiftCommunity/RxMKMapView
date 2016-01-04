@@ -43,3 +43,14 @@ mapView.rx_mapViewDidFinishLoadingMap
 
 RxMKMapView requires Swift 2.0 and RxSwift (2.0.0-beta).
 
+## Author
+
+__Spiros Gerokostas__ 
+
+- [![](https://img.shields.io/badge/twitter-sger-brightgreen.svg)](https://twitter.com/sger) 
+- :email: spiros.gerokostas@gmail.com
+
+## License
+
+RxMKMapView is available under the MIT license. See the LICENSE file for more info.
+
