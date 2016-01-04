@@ -1,0 +1,25 @@
+{
+  "name": "RxMKMapView",
+  "version": "0.1.0",
+  "summary": "A short description of RxMKMapView.",
+  "description": "",
+  "homepage": "https://github.com/<GITHUB_USERNAME>/RxMKMapView",
+  "license": "MIT",
+  "authors": {
+    "Spiros Gerokostas": "spiros.gerokostas@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/<GITHUB_USERNAME>/RxMKMapView.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "requires_arc": true,
+  "source_files": "Pod/Classes/**/*",
+  "resource_bundles": {
+    "RxMKMapView": [
+      "Pod/Assets/*.png"
+    ]
+  }
+}

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		17E30B24F3B46A2AB704A554 /* Pods_RxMKMapView_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB60188D17AE9468E780C70 /* Pods_RxMKMapView_Example.framework */; };
+		56AC96251C3ACCC100061156 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56AC96241C3ACCC100061156 /* MapKit.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 /* Begin PBXFileReference section */
 		30F43ABA78AA0BEE3CA94BA7 /* Pods-RxMKMapView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxMKMapView_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxMKMapView_Tests/Pods-RxMKMapView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		3CB60188D17AE9468E780C70 /* Pods_RxMKMapView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxMKMapView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		56AC96241C3ACCC100061156 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		572B1D23A67BFE29931E2A3C /* Pods_RxMKMapView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxMKMapView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* RxMKMapView_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxMKMapView_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -54,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56AC96251C3ACCC100061156 /* MapKit.framework in Frameworks */,
 				17E30B24F3B46A2AB704A554 /* Pods_RxMKMapView_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -153,6 +156,7 @@
 		DB2FC560E514C04166BDF240 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				56AC96241C3ACCC100061156 /* MapKit.framework */,
 				3CB60188D17AE9468E780C70 /* Pods_RxMKMapView_Example.framework */,
 				572B1D23A67BFE29931E2A3C /* Pods_RxMKMapView_Tests.framework */,
 			);
@@ -215,6 +219,11 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -489,6 +498,7 @@
 			baseConfigurationReference = C6D117AA48BC9784B94F2A91 /* Pods-RxMKMapView_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = RxMKMapView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -502,6 +512,7 @@
 			baseConfigurationReference = F3F5AF82CBCB5CFBD92A6381 /* Pods-RxMKMapView_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = RxMKMapView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
