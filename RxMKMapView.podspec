@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "RxMKMapView"
-  s.version          = "1.0.1"
+  s.version          = "1.0.2"
   s.summary          = "Reactive wrapper for MKMapView `delegate`."
 
   s.description      = <<-DESC
