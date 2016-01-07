@@ -5,16 +5,19 @@ PODS:
     - RxSwift (~> 2.0)
   - RxCocoa (2.0.0):
     - RxSwift (~> 2.0)
-  - RxMKMapView (0.1.0)
+  - RxMKMapView (1.0.4):
+    - RxBlocking (~> 2.0.0-beta.4)
+    - RxCocoa (~> 2.0.0-beta.4)
+    - RxSwift (~> 2.0.0-beta.4)
   - RxSwift (2.0.0)
 
 DEPENDENCIES:
   - Nimble (= 3.0.0)
   - Quick (~> 0.8.0)
-  - RxBlocking (~> 2.0.0-beta.4)
-  - RxCocoa (~> 2.0.0-beta.4)
+  - RxBlocking (~> 2.0)
+  - RxCocoa (~> 2.0)
   - RxMKMapView (from `../`)
-  - RxSwift (~> 2.0.0-beta.4)
+  - RxSwift (~> 2.0)
 
 EXTERNAL SOURCES:
   RxMKMapView:
@@ -25,7 +28,7 @@ SPEC CHECKSUMS:
   Quick: 563d0f6ec5f72e394645adb377708639b7dd38ab
   RxBlocking: a95a10ed54eb5d116f6c9a87047ff671e181d07b
   RxCocoa: b0ebd70b4f7450bdb3c8987b122f8fd568dc1e2f
-  RxMKMapView: 5a403701805cdaa8bce45f70a981a5f0f3537ee0
+  RxMKMapView: 7f6e7cd9c65ed4f2c2f20b9392e19aaff2fcf11a
   RxSwift: d83246efa6f16c50c143bec134649d045498f601
 
 COCOAPODS: 0.39.0

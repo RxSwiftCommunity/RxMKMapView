@@ -84,12 +84,18 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods-RxMKMapView_Tests/RxBlocking.framework"
+  install_framework "Pods-RxMKMapView_Tests/RxCocoa.framework"
   install_framework "Pods-RxMKMapView_Tests/RxMKMapView.framework"
+  install_framework "Pods-RxMKMapView_Tests/RxSwift.framework"
   install_framework "Pods-RxMKMapView_Tests/Nimble.framework"
   install_framework "Pods-RxMKMapView_Tests/Quick.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods-RxMKMapView_Tests/RxBlocking.framework"
+  install_framework "Pods-RxMKMapView_Tests/RxCocoa.framework"
   install_framework "Pods-RxMKMapView_Tests/RxMKMapView.framework"
+  install_framework "Pods-RxMKMapView_Tests/RxSwift.framework"
   install_framework "Pods-RxMKMapView_Tests/Nimble.framework"
   install_framework "Pods-RxMKMapView_Tests/Quick.framework"
 fi
