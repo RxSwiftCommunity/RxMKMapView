@@ -23,12 +23,12 @@ class ViewController: UIViewController {
         let mapView = MKMapView(frame: view.frame)
         view.addSubview(mapView)
         
-        mapView.rx_mapViewWillStartLoadingMap
+        mapView.rx_willStartLoadingMap
             .subscribeNext {
                 
             }.addDisposableTo(disposeBag)
         
-        mapView.rx_mapViewDidFinishLoadingMap
+        mapView.rx_didFinishLoadingMap
             .subscribeNext { _ in
                 print("map loaded")
             }.addDisposableTo(disposeBag)

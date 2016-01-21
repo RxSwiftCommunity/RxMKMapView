@@ -19,14 +19,14 @@ RxMKMapView is a Reactive wrapper for MKMapView `delegate`.
 let mapView = MKMapView(frame: view.frame)
 view.addSubview(mapView)
 
-mapView.rx_mapViewWillStartLoadingMap
+mapView.rx_WillStartLoadingMap
 .subscribeNext {
-  print("rx_mapViewWillStartLoadingMap")
+  print("rx_WillStartLoadingMap")
 }.addDisposableTo(disposeBag)
 
-mapView.rx_mapViewDidFinishLoadingMap
+mapView.rx_DidFinishLoadingMap
 .subscribeNext { _ in
-  print("rx_mapViewDidFinishLoadingMap")
+  print("rx_DidFinishLoadingMap")
 }.addDisposableTo(disposeBag)
 
 ```
