@@ -23,9 +23,6 @@ extension MKMapView {
 
     // MARK: Responding to Region Events
 
-    /**
-    Reactive wrapper for `delegate` message.
-    */
     public var rx_regionWillChangeAnimated: Observable<Bool!> {
         return rx_delegate.observe("mapView:regionWillChangeAnimated:")
             .map { a in
@@ -42,9 +39,6 @@ extension MKMapView {
 
     // MARK: Responding to Loading Events
 
-    /**
-    Reactive wrapper for `delegate` message.
-    */
     public var rx_mapViewWillStartLoadingMap: Observable<Void>{
         return rx_delegate.observe("mapViewWillStartLoadingMap:")
             .map { _ in
@@ -68,9 +62,6 @@ extension MKMapView {
 
     // MARK: Responding to Rendering Events
 
-    /**
-    Reactive wrapper for `delegate` message.
-    */
     public var rx_mapViewWillStartRenderingMap: Observable<Void>{
         return rx_delegate.observe("mapViewWillStartRenderingMap:")
             .map { _ in
@@ -87,9 +78,6 @@ extension MKMapView {
 
     // MARK: Responding to Location User Events
 
-    /**
-    Reactive wrapper for `delegate` message.
-    */
     public var rx_mapViewWillStartLocatingUser: Observable<Void> {
         return rx_delegate.observe("mapViewWillStartLocatingUser:")
             .map { _ in
@@ -120,9 +108,6 @@ extension MKMapView {
 
     // MARK: Responding to Annotation Views
 
-    /**
-    Reactive wrapper for `delegate` message.
-    */
     public var rx_mapViewDidAddAnnotationViews: Observable<[MKAnnotationView]!> {
         return rx_delegate.observe("mapView:didAddAnnotationViews:")
             .map { a in
