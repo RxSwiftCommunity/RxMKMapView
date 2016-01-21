@@ -10,6 +10,14 @@ import MapKit
 import RxSwift
 import RxCocoa
 
+// Taken from RxCococa until marked as public
+func castOrThrow<T>(resultType: T.Type, _ object: AnyObject) throws -> T {
+    guard let returnValue = object as? T else {
+        throw RxCocoaError.CastingError(object: object, targetType: resultType)
+    }
+    return returnValue
+}
+
 extension MKMapView {
 
     /**
@@ -23,18 +31,18 @@ extension MKMapView {
 
     // MARK: Responding to Map Position Changes
 
-    public var rx_regionWillChangeAnimated: Observable<Bool!> {
+    public var rx_regionWillChangeAnimated: Observable<Bool> {
         return rx_delegate.observe("mapView:regionWillChangeAnimated:")
             .map { a in
-                return a[1] as? Bool
+                return try castOrThrow(Bool.self, a[1])
             }
     }
 
-    public var rx_regionDidChangeAnimated: Observable<Bool!> {
+    public var rx_regionDidChangeAnimated: Observable<Bool> {
         return rx_delegate.observe("mapView:regionDidChangeAnimated:")
             .map { a in
-                return a[1] as? Bool
-        }
+                return try castOrThrow(Bool.self, a[1])
+            }
     }
 
     // MARK: Loading the Map Data
@@ -56,8 +64,8 @@ extension MKMapView {
     public var rx_didFailLoadingMap: Observable<NSError!>{
         return rx_delegate.observe("mapViewDidFailLoadingMap:withError:")
             .map { a in
-                return a[1] as? NSError
-        }
+                return try castOrThrow(NSError.self, a[1])
+            }
     }
 
     // MARK: Responding to Rendering Events
@@ -72,8 +80,8 @@ extension MKMapView {
     public var rx_didFinishRenderingMap: Observable<Bool!> {
         return rx_delegate.observe("mapViewDidFinishRenderingMap:fullyRendered:")
             .map { a in
-                return a[1] as? Bool
-        }
+                return try castOrThrow(Bool.self, a[1])
+            }
     }
 
     // MARK: Tracking the User Location
@@ -92,56 +100,74 @@ extension MKMapView {
         }
     }
 
-    public var rx_didUpdateUserLocation: Observable<MKUserLocation!> {
+    public var rx_didUpdateUserLocation: Observable<MKUserLocation> {
         return rx_delegate.observe("mapView:didUpdateUserLocation:")
             .map { a in
-                return a[1] as? MKUserLocation
-        }
+                return try castOrThrow(MKUserLocation.self, a[1])
+            }
     }
 
-    public var rx_didFailToLocateUserWithError: Observable<NSError!> {
+    public var rx_didFailToLocateUserWithError: Observable<NSError> {
         return rx_delegate.observe("mapView:didFailToLocateUserWithError:")
             .map { a in
-                return a[1] as? NSError
-        }
+                return try castOrThrow(NSError.self, a[1])
+            }
+    }
+
+    public var rx_didChangeUserTrackingMode: Observable<(userTrackingMode: MKUserTrackingMode, animated: Bool)> {
+        return rx_delegate.observe("mapView:didChangeUserTrackingMode:")
+            .map { a in
+                return (userTrackingMode: try castOrThrow(MKUserTrackingMode.self, a[1]), animated: try castOrThrow(Bool.self, a[2]))
+            }
     }
 
     // MARK: Responding to Annotation Views
 
-    public var rx_didAddAnnotationViews: Observable<[MKAnnotationView]!> {
+    public var rx_didAddAnnotationViews: Observable<[MKAnnotationView]> {
         return rx_delegate.observe("mapView:didAddAnnotationViews:")
             .map { a in
-                return a[1] as? [MKAnnotationView]
-        }
+                return try castOrThrow([MKAnnotationView].self, a[1])
+            }
     }
 
-    public var rx_annotationViewCalloutAccessoryControlTapped: Observable<Void> {
+    public var rx_annotationViewCalloutAccessoryControlTapped: Observable<(view: MKAnnotationView, control: UIControl)> {
         return rx_delegate.observe("mapView:annotationView:calloutAccessoryControlTapped:")
-            .map { _ in
-                return()
-        }
+            .map { a in
+                return (try castOrThrow(MKAnnotationView.self, a[1]), try castOrThrow(UIControl.self, a[2]))
+            }
     }
 
     // MARK: Selecting Annotation Views
 
-    public var rx_didSelectAnnotationView: Observable<MKAnnotationView!> {
+    public var rx_didSelectAnnotationView: Observable<MKAnnotationView> {
         return rx_delegate.observe("mapView:didSelectAnnotationView:")
             .map { a in
-                return a[1] as? MKAnnotationView
-        }
+                return try castOrThrow(MKAnnotationView.self, a[1])
+            }
     }
 
-    public var rx_didDeselectAnnotationView: Observable<MKAnnotationView!> {
+    public var rx_didDeselectAnnotationView: Observable<MKAnnotationView> {
         return rx_delegate.observe("mapView:didDeselectAnnotationView:")
             .map { a in
-                return a[1] as? MKAnnotationView
-        }
+                return try castOrThrow(MKAnnotationView.self, a[1])
+            }
     }
 
-    public var rx_didChangeState: Observable<(view: MKAnnotationView!, newState: MKAnnotationViewDragState, oldState: MKAnnotationViewDragState)> {
+    public var rx_didChangeState: Observable<(view: MKAnnotationView, newState: MKAnnotationViewDragState, oldState: MKAnnotationViewDragState)> {
         return rx_delegate.observe("mapView:annotationView:didChangeDragState:fromOldState:")
             .map { a in
-                return (view: a[1] as? MKAnnotationView, newState: a[2] as! MKAnnotationViewDragState, oldState: a[3] as! MKAnnotationViewDragState)
-        }
+                return (view: try castOrThrow(MKAnnotationView.self, a[1]),
+                    newState: try castOrThrow(MKAnnotationViewDragState.self, a[2]),
+                    oldState: try castOrThrow(MKAnnotationViewDragState.self, a[3]))
+            }
+    }
+
+    // MARK: Managing the Display of Overlays
+
+    public var rx_didAddOverlayRenderers: Observable<[MKOverlayRenderer]> {
+        return rx_delegate.observe("mapView:didAddOverlayRenderers:")
+            .map { a in
+                return try castOrThrow([MKOverlayRenderer].self, a[1])
+            }
     }
 }
