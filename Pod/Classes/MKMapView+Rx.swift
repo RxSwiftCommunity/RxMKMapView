@@ -25,7 +25,7 @@ extension MKMapView {
 
      For more information take a look at `DelegateProxyType` protocol documentation.
      */
-    public var rx_delegate:DelegateProxy {
+    public var rx_delegate: DelegateProxy {
         return proxyForObject(RxMKMapViewDelegateProxy.self, self)
     }
 
@@ -114,10 +114,12 @@ extension MKMapView {
             }
     }
 
-    public var rx_didChangeUserTrackingMode: Observable<(userTrackingMode: MKUserTrackingMode, animated: Bool)> {
+    public var rx_didChangeUserTrackingMode:
+        Observable<(mode: MKUserTrackingMode, animated: Bool)> {
         return rx_delegate.observe("mapView:didChangeUserTrackingMode:")
             .map { a in
-                return (userTrackingMode: try castOrThrow(MKUserTrackingMode.self, a[1]), animated: try castOrThrow(Bool.self, a[2]))
+                return (mode: try castOrThrow(MKUserTrackingMode.self, a[1]),
+                    animated: try castOrThrow(Bool.self, a[2]))
             }
     }
 
@@ -130,10 +132,12 @@ extension MKMapView {
             }
     }
 
-    public var rx_annotationViewCalloutAccessoryControlTapped: Observable<(view: MKAnnotationView, control: UIControl)> {
+    public var rx_annotationViewCalloutAccessoryControlTapped:
+        Observable<(view: MKAnnotationView, control: UIControl)> {
         return rx_delegate.observe("mapView:annotationView:calloutAccessoryControlTapped:")
             .map { a in
-                return (try castOrThrow(MKAnnotationView.self, a[1]), try castOrThrow(UIControl.self, a[2]))
+                return (view: try castOrThrow(MKAnnotationView.self, a[1]),
+                    control: try castOrThrow(UIControl.self, a[2]))
             }
     }
 
@@ -153,7 +157,8 @@ extension MKMapView {
             }
     }
 
-    public var rx_didChangeState: Observable<(view: MKAnnotationView, newState: MKAnnotationViewDragState, oldState: MKAnnotationViewDragState)> {
+    public var rx_didChangeState:
+        Observable<(view: MKAnnotationView, newState: MKAnnotationViewDragState, oldState: MKAnnotationViewDragState)> {
         return rx_delegate.observe("mapView:annotationView:didChangeDragState:fromOldState:")
             .map { a in
                 return (view: try castOrThrow(MKAnnotationView.self, a[1]),
