@@ -85,6 +85,39 @@ extension MKMapView {
         }
     }
 
+    // MARK: Responding to Location User Events
+
+    /**
+    Reactive wrapper for `delegate` message.
+    */
+    public var rx_mapViewWillStartLocatingUser: Observable<Void> {
+        return rx_delegate.observe("mapViewWillStartLocatingUser:")
+            .map { _ in
+                return()
+        }
+    }
+
+    public var rx_mapViewDidStopLocatingUser: Observable<Void> {
+        return rx_delegate.observe("mapViewDidStopLocatingUser:")
+            .map { _ in
+                return()
+        }
+    }
+
+    public var rx_mapViewDidUpdateUserLocation: Observable<MKUserLocation!> {
+        return rx_delegate.observe("mapView:didUpdateUserLocation:")
+            .map { a in
+                return a[1] as? MKUserLocation
+        }
+    }
+
+    public var rx_mapViewDidFailToLocateUserWithError: Observable<NSError!> {
+        return rx_delegate.observe("mapView:didFailToLocateUserWithError:")
+            .map { a in
+                return a[1] as? NSError
+        }
+    }
+
     // MARK: Responding to Annotation Views
 
     /**
@@ -122,39 +155,6 @@ extension MKMapView {
         return rx_delegate.observe("mapView:annotationView:didChangeDragState:fromOldState:")
             .map { a in
                 return (view: a[1] as? MKAnnotationView, newState: a[2] as! MKAnnotationViewDragState, oldState: a[3] as! MKAnnotationViewDragState)
-        }
-    }
-
-    // MARK: Responding to Location User Events
-
-    /**
-    Reactive wrapper for `delegate` message.
-    */
-    public var rx_mapViewWillStartLocatingUser: Observable<Void> {
-        return rx_delegate.observe("mapViewWillStartLocatingUser:")
-            .map { _ in
-                return()
-        }
-    }
-
-    public var rx_mapViewDidStopLocatingUser: Observable<Void> {
-        return rx_delegate.observe("mapViewDidStopLocatingUser:")
-            .map { _ in
-                return()
-        }
-    }
-
-    public var rx_mapViewDidUpdateUserLocation: Observable<MKUserLocation!> {
-        return rx_delegate.observe("mapView:didUpdateUserLocation:")
-            .map { a in
-                return a[1] as? MKUserLocation
-        }
-    }
-
-    public var rx_mapViewDidFailToLocateUserWithError: Observable<NSError!> {
-        return rx_delegate.observe("mapView:didFailToLocateUserWithError:")
-            .map { a in
-                return a[1] as? NSError
         }
     }
 }
