@@ -21,7 +21,7 @@ extension MKMapView {
         return proxyForObject(RxMKMapViewDelegateProxy.self, self)
     }
 
-    // MARK: Responding to Region Events
+    // MARK: Responding to Map Position Changes
 
     public var rx_regionWillChangeAnimated: Observable<Bool!> {
         return rx_delegate.observe("mapView:regionWillChangeAnimated:")
@@ -37,7 +37,7 @@ extension MKMapView {
         }
     }
 
-    // MARK: Responding to Loading Events
+    // MARK: Loading the Map Data
 
     public var rx_mapViewWillStartLoadingMap: Observable<Void>{
         return rx_delegate.observe("mapViewWillStartLoadingMap:")
@@ -76,7 +76,7 @@ extension MKMapView {
         }
     }
 
-    // MARK: Responding to Location User Events
+    // MARK: Tracking the User Location
 
     public var rx_mapViewWillStartLocatingUser: Observable<Void> {
         return rx_delegate.observe("mapViewWillStartLocatingUser:")
@@ -121,6 +121,8 @@ extension MKMapView {
                 return()
         }
     }
+
+    // MARK: Selecting Annotation Views
 
     public var rx_mapViewDidSelectAnnotationView: Observable<MKAnnotationView!> {
         return rx_delegate.observe("mapView:didSelectAnnotationView:")
