@@ -7,10 +7,9 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = "RxMKMapView"
-  s.version          = "1.0.5"
-  s.summary          = "Reactive wrapper for MKMapView `delegate`."
-
+  s.name             = 'RxMKMapView'
+  s.version          = '1.0.5'
+  s.summary          = 'Reactive wrapper for MKMapView `delegate`'
   s.description      = <<-DESC
 RxMKMapView is a Reactive wrapper for MKMapView `delegate`.
 
@@ -32,10 +31,10 @@ mapView.rx_DidFinishLoadingMap
 ```
 DESC
 
-  s.homepage         = "https://github.com/sger/RxMKMapView"
+  s.homepage         = 'https://github.com/sger/RxMKMapView'
   s.license          = 'MIT'
-  s.author           = { "Spiros Gerokostas" => "spiros.gerokostas@gmail.com" }
-  s.source           = { :git => "https://github.com/sger/RxMKMapView.git", :tag => s.version.to_s }
+  s.author           = { 'Spiros Gerokostas' => 'spiros.gerokostas@gmail.com' }
+  s.source           = { :git => 'https://github.com/sger/RxMKMapView.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/sger'
 
   s.platform     = :ios, '8.0'
