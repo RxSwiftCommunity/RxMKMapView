@@ -15,22 +15,24 @@ import RxMKMapView
 class ViewController: UIViewController {
 
     var disposeBag = DisposeBag()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+
         let mapView = MKMapView(frame: view.frame)
         view.addSubview(mapView)
-        
+
         mapView.rx_willStartLoadingMap
-            .subscribeNext {
-                
+            .asDriver()
+            .driveNext {
+                print("map started loaded")
             }.addDisposableTo(disposeBag)
-        
+
         mapView.rx_didFinishLoadingMap
-            .subscribeNext { _ in
-                print("map loaded")
+            .asDriver()
+            .driveNext {
+                print("map finished loaded")
             }.addDisposableTo(disposeBag)
     }
 

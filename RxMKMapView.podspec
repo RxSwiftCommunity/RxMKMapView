@@ -15,22 +15,22 @@ Pod::Spec.new do |s|
 RxMKMapView is a Reactive wrapper for MKMapView `delegate`.
 
 ```swift
-
 let mapView = MKMapView(frame: view.frame)
 view.addSubview(mapView)
 
 mapView.rx_WillStartLoadingMap
-.subscribeNext {
-  print("rx_WillStartLoadingMap")
-}.addDisposableTo(disposeBag)
+    .asDriver()
+    .driveeNext {
+        print("rx_WillStartLoadingMap")
+    }.addDisposableTo(disposeBag)
 
 mapView.rx_DidFinishLoadingMap
-.subscribeNext { _ in
-  print("rx_DidFinishLoadingMap")
-}.addDisposableTo(disposeBag)
-
+    .asDriver()
+    .driveNext {
+        print("rx_DidFinishLoadingMap")
+    }.addDisposableTo(disposeBag)
 ```
-                       DESC
+DESC
 
   s.homepage         = "https://github.com/sger/RxMKMapView"
   s.license          = 'MIT'
