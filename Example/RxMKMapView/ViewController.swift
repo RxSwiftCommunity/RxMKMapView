@@ -25,12 +25,12 @@ class ViewController: UIViewController {
         
         mapView.rx_willStartLoadingMap
             .subscribeNext {
-                
+                print("map started loaded")
             }.addDisposableTo(disposeBag)
         
         mapView.rx_didFinishLoadingMap
-            .subscribeNext { _ in
-                print("map loaded")
+            .subscribeNext {
+                print("map finished loaded")
             }.addDisposableTo(disposeBag)
     }
 
