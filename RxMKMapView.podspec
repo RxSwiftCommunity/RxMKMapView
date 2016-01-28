@@ -48,6 +48,5 @@ mapView.rx_DidFinishLoadingMap
 
   s.dependency 'RxCocoa', '~> 2.0'
   s.dependency 'RxSwift', '~> 2.0'
-  s.dependency 'RxBlocking', '~> 2.0'
   s.frameworks = 'Foundation'
 end
