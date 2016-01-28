@@ -5,7 +5,7 @@ PODS:
     - RxSwift (~> 2.0)
   - RxCocoa (2.1.0):
     - RxSwift (~> 2.0)
-  - RxMKMapView (1.0.5):
+  - RxMKMapView (2.0.0):
     - RxCocoa (~> 2.0)
     - RxSwift (~> 2.0)
   - RxSwift (2.1.0)
