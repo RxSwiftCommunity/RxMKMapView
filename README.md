@@ -27,14 +27,14 @@ view.addSubview(mapView)
 
 // MARK: Responding to Loading Events
 
-mapView.rx_willStartLoadingMap
+mapView.rx_mapViewWillStartLoadingMap
 .subscribeNext {
-	print("rx_willStartLoadingMap")
+	print("rx_mapViewWillStartLoadingMap")
 }.addDisposableTo(disposeBag)
 
-mapView.rx_didFinishLoadingMap
+mapView.rx_mapViewDidFinishLoadingMap
 .subscribeNext { _ in
-	print("rx_didFinishLoadingMap")
+	print("rx_mapViewDidFinishLoadingMap")
 }.addDisposableTo(disposeBag)
 
 ```
