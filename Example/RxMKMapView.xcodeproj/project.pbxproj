@@ -15,7 +15,6 @@
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		A20FF907B830433C2B7A633E /* Pods_RxMKMapView_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 572B1D23A67BFE29931E2A3C /* Pods_RxMKMapView_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,7 +43,6 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* RxMKMapView_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxMKMapView_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		74AC09DABF111B9FCEC4A3F5 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		C6D117AA48BC9784B94F2A91 /* Pods-RxMKMapView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxMKMapView_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxMKMapView_Example/Pods-RxMKMapView_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		D1A1963A72F0AC1A7F2C0296 /* RxMKMapView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = RxMKMapView.podspec; path = ../RxMKMapView.podspec; sourceTree = "<group>"; };
@@ -120,7 +118,6 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 				56B7C8EC1C3AECE3002DF551 /* RxMKMapViewTests.swift */,
 			);
@@ -380,7 +377,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
 				56B7C8ED1C3AECE3002DF551 /* RxMKMapViewTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
