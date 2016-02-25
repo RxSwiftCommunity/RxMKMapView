@@ -176,8 +176,13 @@ extension MKMapView {
         let source = rx_delegate.observe("mapView:annotationView:didChangeDragState:fromOldState:")
             .map { a in
                 return (view: try castOrThrow(MKAnnotationView.self, a[1]),
-                    newState: try castOrThrow(MKAnnotationViewDragState.self, a[2]),
-                    oldState: try castOrThrow(MKAnnotationViewDragState.self, a[3]))
+                    newState: try castOrThrow(UInt.self, a[2]),
+                    oldState: try castOrThrow(UInt.self, a[3]))
+            }
+            .map { (view, newState, oldState) in
+                return (view: view,
+                    newState: MKAnnotationViewDragState(rawValue: newState)!,
+                    oldState: MKAnnotationViewDragState(rawValue: oldState)!)
             }
         return ControlEvent(events: source)
     }

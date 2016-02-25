@@ -7,6 +7,10 @@
 //
 
 import XCTest
+import MapKit
+import Nimble
+import RxSwift
+import RxCocoa
 
 class RxMKMapViewTests: XCTestCase {
     
@@ -20,16 +24,34 @@ class RxMKMapViewTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
+    func test_rx_didChangeState() {
+        let mapView = MKMapView()
+        var resultView: MKAnnotationView?
+        var resultNewState: MKAnnotationViewDragState?
+        var resultOldState: MKAnnotationViewDragState?
+        
+        
+        autoreleasepool {
+            _ = mapView.rx_didChangeState
+                .subscribeNext { (view, newState, oldState) -> Void in
+                    resultView = view
+                    resultNewState = newState
+                    resultOldState = oldState
+                }
+            
+            let newState = MKAnnotationViewDragState.Starting
+            let oldState = MKAnnotationViewDragState.Dragging
+            
+            mapView.delegate!.mapView!(mapView,
+                annotationView: MKAnnotationView(),
+                didChangeDragState: newState,
+                fromOldState: oldState)
+            
+            expect(resultView).toNot(beNil())
+            expect(resultNewState).to(equal(newState))
+            expect(resultOldState).to(equal(oldState))
         }
+        
     }
     
 }
