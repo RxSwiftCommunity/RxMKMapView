@@ -125,10 +125,14 @@ extension MKMapView {
 
     public var rx_didChangeUserTrackingMode:
         ControlEvent<(mode: MKUserTrackingMode, animated: Bool)> {
-        let source = rx_delegate.observe("mapView:didChangeUserTrackingMode:")
+        let source = rx_delegate.observe("mapView:didChangeUserTrackingMode:animated:")
             .map { a in
-                return (mode: try castOrThrow(MKUserTrackingMode.self, a[1]),
+                return (mode: try castOrThrow(Int.self, a[1]),
                     animated: try castOrThrow(Bool.self, a[2]))
+            }
+            .map { (mode, animated) in
+                return (mode: MKUserTrackingMode(rawValue: mode)!,
+                    animated: animated)
             }
         return ControlEvent(events: source)
     }
