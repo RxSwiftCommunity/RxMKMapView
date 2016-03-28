@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'RxMKMapView'
-  s.version          = '2.0.2'
+  s.version          = '2.0.3'
   s.summary          = 'Reactive wrapper for MKMapView `delegate`'
   s.description      = <<-DESC
 RxMKMapView is a Reactive wrapper for MKMapView `delegate`.
@@ -45,7 +45,7 @@ DESC
     'RxMKMapView' => ['Pod/Assets/*.png']
   }
 
-  s.dependency 'RxCocoa', '~> 2.2'
-  s.dependency 'RxSwift', '~> 2.2'
+  s.dependency 'RxCocoa', '~> 2.3.1'
+  s.dependency 'RxSwift', '~> 2.3.1'
   s.frameworks = 'Foundation'
 end
