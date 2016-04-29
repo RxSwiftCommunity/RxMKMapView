@@ -3,14 +3,14 @@ use_frameworks!
 
 target 'RxMKMapView_Example', :exclusive => true do
   pod "RxMKMapView", :path => "../"
-  pod 'RxSwift',    '~> 2.3.1'
-  pod 'RxCocoa',    '~> 2.3.1'
-  pod 'RxBlocking', '~> 2.3.1'
+  pod 'RxSwift'
+  pod 'RxCocoa'
+  pod 'RxBlocking'
 end
 
 target 'RxMKMapView_Tests', :exclusive => true do
   pod "RxMKMapView", :path => "../"
 
-  pod 'Quick', '~> 0.8.0'
-  pod 'Nimble', '3.0.0'
+  pod 'Quick'
+  pod 'Nimble'
 end
