@@ -10,11 +10,22 @@ RxMKMapView is a [RxSwift](https://github.com/ReactiveX/RxSwift) wrapper for MKM
 
 ## Installation
 
+### CocoaPods
+
 RxMKMapView is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
 pod "RxMKMapView"
+```
+
+### Carthage
+
+To install RxMKMapView through [Carthage](https://github.com/Carthage/Carthage),
+add the following line to your Cartfile:
+
+```
+github "RxSwiftCommunity/RxMKMapView"
 ```
 
 ## Example Usages
