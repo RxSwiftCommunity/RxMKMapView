@@ -13,6 +13,7 @@
 		2BEA446A1D2B222700EC2804 /* RxMKMapViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEA44681D2B222700EC2804 /* RxMKMapViewDelegateProxy.swift */; };
 		2BEA446F1D2BA92F00EC2804 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BEA446D1D2BA92F00EC2804 /* RxCocoa.framework */; };
 		2BEA44701D2BA92F00EC2804 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BEA446E1D2BA92F00EC2804 /* RxSwift.framework */; };
+		2BFD5DA51D30535D0061A81D /* MKMapView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFD5DA41D30535D0061A81D /* MKMapView+Rx.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +36,7 @@
 		2BEA44681D2B222700EC2804 /* RxMKMapViewDelegateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RxMKMapViewDelegateProxy.swift; path = Pod/Classes/RxMKMapViewDelegateProxy.swift; sourceTree = SOURCE_ROOT; };
 		2BEA446D1D2BA92F00EC2804 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		2BEA446E1D2BA92F00EC2804 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		2BFD5DA41D30535D0061A81D /* MKMapView+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "MKMapView+Rx.swift"; path = "Pod/Classes/MKMapView+Rx.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				2BEA44681D2B222700EC2804 /* RxMKMapViewDelegateProxy.swift */,
+				2BFD5DA41D30535D0061A81D /* MKMapView+Rx.swift */,
 				2BEA44501D2B219400EC2804 /* RxMKMapView.h */,
 				2BEA44521D2B219400EC2804 /* Info.plist */,
 			);
@@ -214,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BEA446A1D2B222700EC2804 /* RxMKMapViewDelegateProxy.swift in Sources */,
+				2BFD5DA51D30535D0061A81D /* MKMapView+Rx.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +345,7 @@
 				);
 				INFOPLIST_FILE = RxMKMapView/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.RxSwiftCommunity.RxMKMapView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -363,6 +368,7 @@
 				);
 				INFOPLIST_FILE = RxMKMapView/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.RxSwiftCommunity.RxMKMapView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
