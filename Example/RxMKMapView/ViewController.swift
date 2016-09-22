@@ -13,33 +13,31 @@ import RxCocoa
 import RxMKMapView
 
 class ViewController: UIViewController {
-
+    
     var disposeBag = DisposeBag()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-
+        
         let mapView = MKMapView(frame: view.frame)
         view.addSubview(mapView)
-
-        mapView.rx_willStartLoadingMap
+        
+        mapView.rx.willStartLoadingMap
             .asDriver()
-            .driveNext {
-                print("map started loaded")
-            }.addDisposableTo(disposeBag)
-
-        mapView.rx_didFinishLoadingMap
+            .drive( onNext: { print("map started loaded") })
+            .addDisposableTo(disposeBag)
+        
+        mapView.rx.didFinishLoadingMap
             .asDriver()
-            .driveNext {
-                print("map finished loaded")
-            }.addDisposableTo(disposeBag)
+            .drive( onNext:{ print("map finished loaded") })
+            .addDisposableTo(disposeBag)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
 }
 
