@@ -12,12 +12,12 @@ import RxCocoa
 
 class RxMKMapViewDelegateProxy: DelegateProxy, MKMapViewDelegate, DelegateProxyType {
 
-    class func currentDelegateFor(object: AnyObject) -> AnyObject? {
+    class func currentDelegateFor(_ object: AnyObject) -> AnyObject? {
         let mapView: MKMapView = (object as? MKMapView)!
         return mapView.delegate
     }
     
-    class func setCurrentDelegate(delegate: AnyObject?, toObject object: AnyObject) {
+    class func setCurrentDelegate(_ delegate: AnyObject?, toObject object: AnyObject) {
         let mapView: MKMapView = (object as? MKMapView)!
         mapView.delegate = delegate as? MKMapViewDelegate
     }
