@@ -1,4 +1,6 @@
 PODS:
+  - Nimble (5.0.0)
+  - Quick (0.9.3)
   - RxCocoa (3.0.0-beta.1):
     - RxSwift (~> 3.0.0-beta.1)
   - RxMKMapView (3.0.0):
@@ -7,6 +9,8 @@ PODS:
   - RxSwift (3.0.0-beta.1)
 
 DEPENDENCIES:
+  - Nimble
+  - Quick
   - RxCocoa (~> 3.0.0-beta.1)
   - RxMKMapView (from `../`)
   - RxSwift (~> 3.0.0-beta.1)
@@ -16,10 +20,12 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
+  Nimble: 56fc9f5020effa2206de22c3dd910f4fb011b92f
+  Quick: 13a2a2b19a5d8e3ed4fd0c36ee46597fd77ebf71
   RxCocoa: 8cecf331302b8ae5381bbab1bccba4ede2eae6a8
   RxMKMapView: c797f9bb5606bcc97c393933adf7edd1986a8d7d
   RxSwift: 0823e8d7969c23bfa9ddfb2afa4881e424a1a710
 
-PODFILE CHECKSUM: 597ccc96cdf5c8204ab34d0957b41d9597ded422
+PODFILE CHECKSUM: c33f98c3b62a39db0be9ed552ad117d5dad2fb49
 
 COCOAPODS: 1.0.0.beta.2
