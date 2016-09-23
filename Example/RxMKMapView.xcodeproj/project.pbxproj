@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		17E30B24F3B46A2AB704A554 /* Pods_RxMKMapView_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB60188D17AE9468E780C70 /* Pods_RxMKMapView_Example.framework */; };
+		35F86F1232F06D6758D64C77 /* Pods_RxMKMapView_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2985F14D2186FBF857ED023 /* Pods_RxMKMapView_Tests.framework */; };
 		56AC96251C3ACCC100061156 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56AC96241C3ACCC100061156 /* MapKit.framework */; };
 		56B7C8ED1C3AECE3002DF551 /* RxMKMapViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B7C8EC1C3AECE3002DF551 /* RxMKMapViewTests.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
@@ -15,7 +15,7 @@
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		A20FF907B830433C2B7A633E /* Pods_RxMKMapView_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 572B1D23A67BFE29931E2A3C /* Pods_RxMKMapView_Tests.framework */; };
+		7F7B63CCFC511518C78E0038 /* Pods_RxMKMapView_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A28E3BC0E930F9C3893B8B99 /* Pods_RxMKMapView_Example.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,26 +29,26 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		30F43ABA78AA0BEE3CA94BA7 /* Pods-RxMKMapView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxMKMapView_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxMKMapView_Tests/Pods-RxMKMapView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		3CB60188D17AE9468E780C70 /* Pods_RxMKMapView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxMKMapView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		449BDBF58CE5236110967490 /* Pods-RxMKMapView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxMKMapView_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxMKMapView_Tests/Pods-RxMKMapView_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		56AC96241C3ACCC100061156 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		56B7C8EC1C3AECE3002DF551 /* RxMKMapViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxMKMapViewTests.swift; sourceTree = "<group>"; };
-		572B1D23A67BFE29931E2A3C /* Pods_RxMKMapView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxMKMapView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* RxMKMapView_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxMKMapView_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; tabWidth = 4; };
+		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* RxMKMapView_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxMKMapView_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		68D075153D0E6C86DFBD5768 /* Pods-RxMKMapView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxMKMapView_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxMKMapView_Example/Pods-RxMKMapView_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		74AC09DABF111B9FCEC4A3F5 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		C6D117AA48BC9784B94F2A91 /* Pods-RxMKMapView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxMKMapView_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxMKMapView_Example/Pods-RxMKMapView_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		A28E3BC0E930F9C3893B8B99 /* Pods_RxMKMapView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxMKMapView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2985F14D2186FBF857ED023 /* Pods_RxMKMapView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxMKMapView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBF1DDF1CBC90AE67462417E /* Pods-RxMKMapView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxMKMapView_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxMKMapView_Example/Pods-RxMKMapView_Example.release.xcconfig"; sourceTree = "<group>"; };
 		D1A1963A72F0AC1A7F2C0296 /* RxMKMapView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = RxMKMapView.podspec; path = ../RxMKMapView.podspec; sourceTree = "<group>"; };
 		EE8158586A27016FB115DAAC /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		F3F5AF82CBCB5CFBD92A6381 /* Pods-RxMKMapView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxMKMapView_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxMKMapView_Example/Pods-RxMKMapView_Example.release.xcconfig"; sourceTree = "<group>"; };
-		F97DC74C9D9E0A7A9FDD4F89 /* Pods-RxMKMapView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxMKMapView_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxMKMapView_Tests/Pods-RxMKMapView_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		FDC962B570C4A512F71199E5 /* Pods-RxMKMapView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxMKMapView_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxMKMapView_Tests/Pods-RxMKMapView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +57,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				56AC96251C3ACCC100061156 /* MapKit.framework in Frameworks */,
-				17E30B24F3B46A2AB704A554 /* Pods_RxMKMapView_Example.framework in Frameworks */,
+				7F7B63CCFC511518C78E0038 /* Pods_RxMKMapView_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,7 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A20FF907B830433C2B7A633E /* Pods_RxMKMapView_Tests.framework in Frameworks */,
+				35F86F1232F06D6758D64C77 /* Pods_RxMKMapView_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,8 +79,8 @@
 				607FACD21AFB9204008FA782 /* Example for RxMKMapView */,
 				607FACE81AFB9204008FA782 /* Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
-				BF45C0657E4BD693EB8705C0 /* Pods */,
 				DB2FC560E514C04166BDF240 /* Frameworks */,
+				8EB25C6AE5A7F3E3235A3E0E /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -142,13 +142,13 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
-		BF45C0657E4BD693EB8705C0 /* Pods */ = {
+		8EB25C6AE5A7F3E3235A3E0E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C6D117AA48BC9784B94F2A91 /* Pods-RxMKMapView_Example.debug.xcconfig */,
-				F3F5AF82CBCB5CFBD92A6381 /* Pods-RxMKMapView_Example.release.xcconfig */,
-				30F43ABA78AA0BEE3CA94BA7 /* Pods-RxMKMapView_Tests.debug.xcconfig */,
-				F97DC74C9D9E0A7A9FDD4F89 /* Pods-RxMKMapView_Tests.release.xcconfig */,
+				68D075153D0E6C86DFBD5768 /* Pods-RxMKMapView_Example.debug.xcconfig */,
+				CBF1DDF1CBC90AE67462417E /* Pods-RxMKMapView_Example.release.xcconfig */,
+				FDC962B570C4A512F71199E5 /* Pods-RxMKMapView_Tests.debug.xcconfig */,
+				449BDBF58CE5236110967490 /* Pods-RxMKMapView_Tests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -157,8 +157,8 @@
 			isa = PBXGroup;
 			children = (
 				56AC96241C3ACCC100061156 /* MapKit.framework */,
-				3CB60188D17AE9468E780C70 /* Pods_RxMKMapView_Example.framework */,
-				572B1D23A67BFE29931E2A3C /* Pods_RxMKMapView_Tests.framework */,
+				A28E3BC0E930F9C3893B8B99 /* Pods_RxMKMapView_Example.framework */,
+				B2985F14D2186FBF857ED023 /* Pods_RxMKMapView_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -170,12 +170,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "RxMKMapView_Example" */;
 			buildPhases = (
-				131664CD8142DC0AFD572317 /* Check Pods Manifest.lock */,
+				2E4106B7D16B6B585D55ED70 /* Check Pods Manifest.lock */,
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
-				9ECC00967409B02912D10924 /* Embed Pods Frameworks */,
-				38F58DE9FE139B7C3E9F4926 /* Copy Pods Resources */,
+				F2B1B750FE011699D2719AEC /* Embed Pods Frameworks */,
+				D8CD7779746854F4DA9890E5 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -190,12 +190,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "RxMKMapView_Tests" */;
 			buildPhases = (
-				6D279F3C4CBF44772AF16948 /* Check Pods Manifest.lock */,
+				4CA071BC4AE66373F1C4195F /* Check Pods Manifest.lock */,
 				607FACE11AFB9204008FA782 /* Sources */,
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
-				56367040CDA511C9A24FE925 /* Embed Pods Frameworks */,
-				66A03138E51128B73F2099BE /* Copy Pods Resources */,
+				684765B053B842F1B6512CFC /* Embed Pods Frameworks */,
+				807A7DC9015AD9C8E4B06D2A /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -214,11 +214,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
 								enabled = 1;
@@ -227,6 +228,7 @@
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
 				};
@@ -271,7 +273,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		131664CD8142DC0AFD572317 /* Check Pods Manifest.lock */ = {
+		2E4106B7D16B6B585D55ED70 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -286,22 +288,22 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		38F58DE9FE139B7C3E9F4926 /* Copy Pods Resources */ = {
+		4CA071BC4AE66373F1C4195F /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RxMKMapView_Example/Pods-RxMKMapView_Example-resources.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		56367040CDA511C9A24FE925 /* Embed Pods Frameworks */ = {
+		684765B053B842F1B6512CFC /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -316,7 +318,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RxMKMapView_Tests/Pods-RxMKMapView_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		66A03138E51128B73F2099BE /* Copy Pods Resources */ = {
+		807A7DC9015AD9C8E4B06D2A /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -331,22 +333,22 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RxMKMapView_Tests/Pods-RxMKMapView_Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6D279F3C4CBF44772AF16948 /* Check Pods Manifest.lock */ = {
+		D8CD7779746854F4DA9890E5 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RxMKMapView_Example/Pods-RxMKMapView_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9ECC00967409B02912D10924 /* Embed Pods Frameworks */ = {
+		F2B1B750FE011699D2719AEC /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -424,8 +426,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -469,8 +473,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -489,14 +495,16 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		607FACF01AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C6D117AA48BC9784B94F2A91 /* Pods-RxMKMapView_Example.debug.xcconfig */;
+			baseConfigurationReference = 68D075153D0E6C86DFBD5768 /* Pods-RxMKMapView_Example.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = RxMKMapView/Info.plist;
@@ -504,13 +512,15 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		607FACF11AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F3F5AF82CBCB5CFBD92A6381 /* Pods-RxMKMapView_Example.release.xcconfig */;
+			baseConfigurationReference = CBF1DDF1CBC90AE67462417E /* Pods-RxMKMapView_Example.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = RxMKMapView/Info.plist;
@@ -518,13 +528,15 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		607FACF31AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 30F43ABA78AA0BEE3CA94BA7 /* Pods-RxMKMapView_Tests.debug.xcconfig */;
+			baseConfigurationReference = FDC962B570C4A512F71199E5 /* Pods-RxMKMapView_Tests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -538,14 +550,16 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RxMKMapView_Example.app/RxMKMapView_Example";
 			};
 			name = Debug;
 		};
 		607FACF41AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F97DC74C9D9E0A7A9FDD4F89 /* Pods-RxMKMapView_Tests.release.xcconfig */;
+			baseConfigurationReference = 449BDBF58CE5236110967490 /* Pods-RxMKMapView_Tests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -555,6 +569,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RxMKMapView_Example.app/RxMKMapView_Example";
 			};
 			name = Release;

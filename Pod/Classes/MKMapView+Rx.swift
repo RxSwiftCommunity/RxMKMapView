@@ -11,211 +11,203 @@ import RxSwift
 import RxCocoa
 
 // Taken from RxCococa until marked as public
-func castOrThrow<T>(resultType: T.Type, _ object: AnyObject) throws -> T {
+func castOrThrow<T>(_ resultType: T.Type, _ object: AnyObject) throws -> T {
     guard let returnValue = object as? T else {
-        throw RxCocoaError.CastingError(object: object, targetType: resultType)
+        throw RxCocoaError.castingError(object: object, targetType: resultType)
     }
+    
     return returnValue
 }
 
-extension MKMapView {
-
+extension Reactive where Base: MKMapView {
+    
     /**
      Reactive wrapper for `delegate`.
-
+     
      For more information take a look at `DelegateProxyType` protocol documentation.
      */
-    public var rx_delegate: DelegateProxy {
-        return proxyForObject(RxMKMapViewDelegateProxy.self, self)
+    public var delegate: DelegateProxy {
+        return RxMKMapViewDelegateProxy.proxyForObject(self.base)
     }
-
+    
+    
     // MARK: Responding to Map Position Changes
-
-    public var rx_regionWillChangeAnimated: ControlEvent<Bool> {
-        let source = rx_delegate
+    
+    public var regionWillChangeAnimated: ControlEvent<Bool> {
+        
+        let source = delegate
             .observe(#selector(MKMapViewDelegate.mapView(_:regionWillChangeAnimated:)))
-            .map { a in
-                return try castOrThrow(Bool.self, a[1])
-            }
+            .map { try castOrThrow(Bool.self, $0[1]) }
+        
         return ControlEvent(events: source)
     }
-
-    public var rx_regionDidChangeAnimated: ControlEvent<Bool> {
-        let source = rx_delegate
+    
+    public var regionDidChangeAnimated: ControlEvent<Bool> {
+        let source = delegate
             .observe(#selector(MKMapViewDelegate.mapView(_:regionDidChangeAnimated:)))
-            .map { a in
-                return try castOrThrow(Bool.self, a[1])
-            }
+            .map { try castOrThrow(Bool.self, $0[1]) }
         return ControlEvent(events: source)
     }
-
+    
+    
     // MARK: Loading the Map Data
-
-    public var rx_willStartLoadingMap: ControlEvent<Void>{
-        let source = rx_delegate
+    
+    public var willStartLoadingMap: ControlEvent<Void>{
+        let source = delegate
             .observe(#selector(MKMapViewDelegate.mapViewWillStartLoadingMap(_:)))
-            .map { _ in
-                return()
-            }
+            .map { _ in () }
+        
         return ControlEvent(events: source)
     }
-
-    public var rx_didFinishLoadingMap: ControlEvent<Void>{
-        let source = rx_delegate
+    
+    public var didFinishLoadingMap: ControlEvent<Void>{
+        let source = delegate
             .observe(#selector(MKMapViewDelegate.mapViewDidFinishLoadingMap(_:)))
-            .map { _ in
-                return()
-            }
+            .map { _ in () }
+        
         return ControlEvent(events: source)
     }
-
-    public var rx_didFailLoadingMap: Observable<NSError>{
-        return rx_delegate
+    
+    public var didFailLoadingMap: Observable<NSError>{
+        return delegate
             .observe(#selector(MKMapViewDelegate.mapViewDidFailLoadingMap(_:withError:)))
-            .map { a in
-                return try castOrThrow(NSError.self, a[1])
-            }
+            .map { try castOrThrow(NSError.self, $0[1]) }
     }
-
+    
     // MARK: Responding to Rendering Events
-
-    public var rx_willStartRenderingMap: ControlEvent<Void>{
-        let source = rx_delegate
+    
+    public var willStartRenderingMap: ControlEvent<Void>{
+        let source = delegate
             .observe(#selector(MKMapViewDelegate.mapViewWillStartRenderingMap(_:)))
-            .map { _ in
-                return()
-            }
+            .map { _ in () }
+        
         return ControlEvent(events: source)
     }
-
-    public var rx_didFinishRenderingMap: ControlEvent<Bool> {
-        let source = rx_delegate
+    
+    public var didFinishRenderingMap: ControlEvent<Bool> {
+        let source = delegate
             .observe(#selector(MKMapViewDelegate.mapViewDidFinishRenderingMap(_:fullyRendered:)))
-            .map { a in
-                return try castOrThrow(Bool.self, a[1])
-            }
+            .map { try castOrThrow(Bool.self, $0[1]) }
+        
         return ControlEvent(events: source)
     }
-
+    
     // MARK: Tracking the User Location
-
-    public var rx_willStartLocatingUser: ControlEvent<Void> {
-        let source = rx_delegate
+    
+    public var willStartLocatingUser: ControlEvent<Void> {
+        let source = delegate
             .observe(#selector(MKMapViewDelegate.mapViewWillStartLocatingUser(_:)))
-            .map { _ in
-                return()
-            }
+            .map { _ in () }
+        
         return ControlEvent(events: source)
     }
-
-    public var rx_didStopLocatingUser: ControlEvent<Void> {
-        let source = rx_delegate
+    
+    public var didStopLocatingUser: ControlEvent<Void> {
+        let source = delegate
             .observe(#selector(MKMapViewDelegate.mapViewDidStopLocatingUser(_:)))
-            .map { _ in
-                return()
-            }
+            .map { _ in () }
+        
         return ControlEvent(events: source)
     }
-
-    public var rx_didUpdateUserLocation: ControlEvent<MKUserLocation> {
-        let source = rx_delegate
-            .observe(#selector(MKMapViewDelegate.mapView(_:didUpdateUserLocation:)))
-            .map { a in
-                return try castOrThrow(MKUserLocation.self, a[1])
-            }
+    
+    public var didUpdateUserLocation: ControlEvent<MKUserLocation> {
+        let source = delegate
+            .observe(#selector(MKMapViewDelegate.mapView(_:didUpdate:)))
+            .map { try castOrThrow(MKUserLocation.self, $0[1]) }
+        
         return ControlEvent(events: source)
     }
-
-    public var rx_didFailToLocateUserWithError: Observable<NSError> {
-        return rx_delegate
+    
+    public var didFailToLocateUserWithError: Observable<NSError> {
+        return delegate
             .observe(#selector(MKMapViewDelegate.mapView(_:didFailToLocateUserWithError:)))
-            .map { a in
-                return try castOrThrow(NSError.self, a[1])
-            }
+            .map { try castOrThrow(NSError.self, $0[1])  }
     }
-
-    public var rx_didChangeUserTrackingMode:
+    
+    public var didChangeUserTrackingMode:
         ControlEvent<(mode: MKUserTrackingMode, animated: Bool)> {
-        let source = rx_delegate
-            .observe(#selector(MKMapViewDelegate.mapView(_:didChangeUserTrackingMode:animated:)))
-            .map { a in
-                return (mode: try castOrThrow(Int.self, a[1]),
-                    animated: try castOrThrow(Bool.self, a[2]))
-            }
-            .map { (mode, animated) in
-                return (mode: MKUserTrackingMode(rawValue: mode)!,
-                    animated: animated)
-            }
+        
+        let source = delegate
+            .observe(#selector(MKMapViewDelegate.mapView(_:didChange:animated:)))
+            .map { (mode: try castOrThrow(Int.self, $0[1]), animated: try castOrThrow(Bool.self, $0[2])) }
+            .map { (mode, animated) in (mode: MKUserTrackingMode(rawValue: mode)!, animated: animated) }
+        
         return ControlEvent(events: source)
     }
-
+    
     // MARK: Responding to Annotation Views
-
-    public var rx_didAddAnnotationViews: ControlEvent<[MKAnnotationView]> {
-        let source = rx_delegate
-            .observe(#selector(MKMapViewDelegate.mapView(_:didAddAnnotationViews:)))
-            .map { a in
-                return try castOrThrow([MKAnnotationView].self, a[1])
-            }
+    
+    
+    
+    public var didAddAnnotationViews: ControlEvent<[MKAnnotationView]> {
+        
+        let source =  delegate
+            // FIXME: how to handle the forced unwrap of the optional function?
+            .observe(#selector(MKMapViewDelegate.mapView(_:didAdd:)! as (MKMapViewDelegate) -> (MKMapView, [MKAnnotationView]) -> Void))
+            .map { try castOrThrow([MKAnnotationView].self, $0[1]) }
+        
         return ControlEvent(events: source)
     }
-
-    public var rx_annotationViewCalloutAccessoryControlTapped:
+    
+    public var annotationViewCalloutAccessoryControlTapped:
         ControlEvent<(view: MKAnnotationView, control: UIControl)> {
-        let source = rx_delegate
+        let source = delegate
             .observe(#selector(MKMapViewDelegate.mapView(_:annotationView:calloutAccessoryControlTapped:)))
             .map { a in
                 return (view: try castOrThrow(MKAnnotationView.self, a[1]),
-                    control: try castOrThrow(UIControl.self, a[2]))
-            }
+                        control: try castOrThrow(UIControl.self, a[2]))
+        }
         return ControlEvent(events: source)
     }
-
+    
     // MARK: Selecting Annotation Views
-
-    public var rx_didSelectAnnotationView: ControlEvent<MKAnnotationView> {
-        let source = rx_delegate
-            .observe(#selector(MKMapViewDelegate.mapView(_:didSelectAnnotationView:)))
+    
+    public var didSelectAnnotationView: ControlEvent<MKAnnotationView> {
+        let source = delegate
+            .observe(#selector(MKMapViewDelegate.mapView(_:didSelect:)))
             .map { a in
                 return try castOrThrow(MKAnnotationView.self, a[1])
-            }
+        }
         return ControlEvent(events: source)
     }
-
-    public var rx_didDeselectAnnotationView: ControlEvent<MKAnnotationView> {
-        let source = rx_delegate
-            .observe(#selector(MKMapViewDelegate.mapView(_:didDeselectAnnotationView:)))
+    
+    public var didDeselectAnnotationView: ControlEvent<MKAnnotationView> {
+        let source = delegate
+            .observe(#selector(MKMapViewDelegate.mapView(_:didDeselect:)))
             .map { a in
                 return try castOrThrow(MKAnnotationView.self, a[1])
-            }
+        }
         return ControlEvent(events: source)
     }
-
-    public var rx_didChangeState:
+    
+    public var didChangeState:
         ControlEvent<(view: MKAnnotationView, newState: MKAnnotationViewDragState, oldState: MKAnnotationViewDragState)> {
-        let source = rx_delegate
-            .observe(#selector(MKMapViewDelegate.mapView(_:annotationView:didChangeDragState:fromOldState:)))
+        let source = delegate
+            .observe(#selector(MKMapViewDelegate.mapView(_:annotationView:didChange:fromOldState:)))
             .map { a in
-                return (view: try castOrThrow(MKAnnotationView.self, a[1]),
-                    newState: try castOrThrow(UInt.self, a[2]),
-                    oldState: try castOrThrow(UInt.self, a[3]))
+                (view: try castOrThrow(MKAnnotationView.self, a[1]),
+                 newState: try castOrThrow(UInt.self, a[2]),
+                 oldState: try castOrThrow(UInt.self, a[3]))
             }
             .map { (view, newState, oldState) in
-                return (view: view,
-                    newState: MKAnnotationViewDragState(rawValue: newState)!,
-                    oldState: MKAnnotationViewDragState(rawValue: oldState)!)
-            }
+                (view: view,
+                 newState: MKAnnotationViewDragState(rawValue: newState)!,
+                 oldState: MKAnnotationViewDragState(rawValue: oldState)!)
+        }
         return ControlEvent(events: source)
     }
-
+    
     // MARK: Managing the Display of Overlays
-
-    public var rx_didAddOverlayRenderers: ControlEvent<[MKOverlayRenderer]> {
-        let source = rx_delegate
-            .observe(#selector(MKMapViewDelegate.mapView(_:didAddOverlayRenderers:)))
-            .map { a in
-                return try castOrThrow([MKOverlayRenderer].self, a[1])
-            }
+    
+    public var didAddOverlayRenderers: ControlEvent<[MKOverlayRenderer]> {
+        
+        let source =  delegate
+            // FIXME: how to handle the forced unwrap of the optional function?
+            .observe(#selector(MKMapViewDelegate.mapView(_:didAdd:)! as (MKMapViewDelegate) -> (MKMapView, [MKOverlayRenderer]) -> Void))
+            .map { try castOrThrow([MKOverlayRenderer].self, $0[1]) }
+        
         return ControlEvent(events: source)
     }
+    
+    
 }
