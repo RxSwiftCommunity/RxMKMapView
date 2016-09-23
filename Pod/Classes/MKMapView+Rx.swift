@@ -26,14 +26,14 @@ extension Reactive where Base: MKMapView {
      
      For more information take a look at `DelegateProxyType` protocol documentation.
      */
-    var delegate: DelegateProxy {
+    public var delegate: DelegateProxy {
         return RxMKMapViewDelegateProxy.proxyForObject(self.base)
     }
     
     
     // MARK: Responding to Map Position Changes
     
-    var regionWillChangeAnimated: ControlEvent<Bool> {
+    public var regionWillChangeAnimated: ControlEvent<Bool> {
         
         let source = delegate
             .observe(#selector(MKMapViewDelegate.mapView(_:regionWillChangeAnimated:)))
@@ -180,7 +180,7 @@ extension Reactive where Base: MKMapView {
         return ControlEvent(events: source)
     }
     
-    public var rx_didChangeState:
+    public var didChangeState:
         ControlEvent<(view: MKAnnotationView, newState: MKAnnotationViewDragState, oldState: MKAnnotationViewDragState)> {
         let source = delegate
             .observe(#selector(MKMapViewDelegate.mapView(_:annotationView:didChange:fromOldState:)))
@@ -199,7 +199,7 @@ extension Reactive where Base: MKMapView {
     
     // MARK: Managing the Display of Overlays
     
-    public var rx_didAddOverlayRenderers: ControlEvent<[MKOverlayRenderer]> {
+    public var didAddOverlayRenderers: ControlEvent<[MKOverlayRenderer]> {
         
         let source =  delegate
             // FIXME: how to handle the forced unwrap of the optional function?
