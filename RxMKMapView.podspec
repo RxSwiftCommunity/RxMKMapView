@@ -17,17 +17,17 @@ RxMKMapView is a Reactive wrapper for MKMapView `delegate`.
 let mapView = MKMapView(frame: view.frame)
 view.addSubview(mapView)
 
-mapView.rx_WillStartLoadingMap
+mapView.rx.WillStartLoadingMap
     .asDriver()
     .drive(onNext: {
-        print("rx_WillStartLoadingMap")
+        print("rx.WillStartLoadingMap")
     })
     .addDisposableTo(disposeBag)
 
-mapView.rx_DidFinishLoadingMap
+mapView.rx.DidFinishLoadingMap
     .asDriver()
     .drive(onNext: {
-        print("rx_DidFinishLoadingMap")
+        print("rx.DidFinishLoadingMap")
     })
     .addDisposableTo(disposeBag)
 ```

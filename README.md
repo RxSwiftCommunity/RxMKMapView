@@ -30,13 +30,13 @@ view.addSubview(mapView)
 
 mapView.rx.willStartLoadingMap
     .subscribe(onNext: {
-	print("rx_willStartLoadingMap")
+        print("rx.willStartLoadingMap")
     })
     .addDisposableTo(disposeBag)
 
 mapView.rx.didFinishLoadingMap
     .subscribe(onNext { _ in
-	print("rx_didFinishLoadingMap")
+        print("rx.didFinishLoadingMap")
     })
     .addDisposableTo(disposeBag)
 
