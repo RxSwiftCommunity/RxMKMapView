@@ -32,12 +32,12 @@ class RxMKMapViewTests: XCTestCase {
                     resultOldState = oldState
                 }
             
-            let newState = MKAnnotationViewDragState.Starting
-            let oldState = MKAnnotationViewDragState.Dragging
+            let newState = MKAnnotationViewDragState.starting
+            let oldState = MKAnnotationViewDragState.dragging
             
             mapView.delegate!.mapView!(mapView,
                 annotationView: MKAnnotationView(),
-                didChangeDragState: newState,
+                didChange: newState,
                 fromOldState: oldState)
             
             expect(resultView).toNot(beNil())
@@ -213,7 +213,7 @@ class RxMKMapViewTests: XCTestCase {
                 }
             let location = MKUserLocation()
             
-            mapView.delegate!.mapView!(mapView, didUpdateUserLocation: location)
+            mapView.delegate!.mapView!(mapView, didUpdate: location)
         }
         
         expect(userLocation).toNot(beNil())
@@ -242,7 +242,7 @@ class RxMKMapViewTests: XCTestCase {
         let mapView = MKMapView()
         var resultTrakingMode: MKUserTrackingMode?
         var animated: Bool?
-        let trakingMode = MKUserTrackingMode.Follow
+        let trakingMode = MKUserTrackingMode.follow
         
         autoreleasepool {
             
@@ -251,7 +251,7 @@ class RxMKMapViewTests: XCTestCase {
                     resultTrakingMode = $0.mode
                     animated = $0.animated
                 }
-            mapView.delegate!.mapView!(mapView, didChangeUserTrackingMode: trakingMode, animated: true)
+            mapView.delegate!.mapView!(mapView, didChange: trakingMode, animated: true)
         }
         
         expect(resultTrakingMode).toNot(beNil())
@@ -269,7 +269,7 @@ class RxMKMapViewTests: XCTestCase {
                 .subscribeNext {
                     resultViews = $0
                 }
-            mapView.delegate!.mapView!(mapView, didAddAnnotationViews: views)
+            mapView.delegate!.mapView!(mapView, didAdd: views)
         }
         
         expect(resultViews).toNot(beNil())
@@ -312,7 +312,7 @@ class RxMKMapViewTests: XCTestCase {
                 .subscribeNext {
                     resultView = $0
             }
-            mapView.delegate!.mapView!(mapView, didSelectAnnotationView: view)
+            mapView.delegate!.mapView!(mapView, didSelect: view)
         }
         
         expect(resultView).toNot(beNil())
@@ -330,7 +330,7 @@ class RxMKMapViewTests: XCTestCase {
                 .subscribeNext {
                     resultView = $0
             }
-            mapView.delegate!.mapView!(mapView, didDeselectAnnotationView: view)
+            mapView.delegate!.mapView!(mapView, didDeselect: view)
         }
         
         expect(resultView).toNot(beNil())
@@ -348,7 +348,7 @@ class RxMKMapViewTests: XCTestCase {
                 .subscribeNext {
                     resultView = $0
             }
-            mapView.delegate!.mapView!(mapView, didAddOverlayRenderers: overlayRenders)
+            mapView.delegate!.mapView!(mapView, didAdd: overlayRenders)
         }
         
         expect(resultView).toNot(beNil())

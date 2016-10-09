@@ -11,9 +11,9 @@ import RxSwift
 import RxCocoa
 
 // Taken from RxCococa until marked as public
-func castOrThrow<T>(resultType: T.Type, _ object: AnyObject) throws -> T {
+func castOrThrow<T>(_ resultType: T.Type, _ object: Any) throws -> T {
     guard let returnValue = object as? T else {
-        throw RxCocoaError.CastingError(object: object, targetType: resultType)
+        throw RxCocoaError.castingError(object: object, targetType: resultType)
     }
     return returnValue
 }
@@ -119,7 +119,7 @@ extension MKMapView {
 
     public var rx_didUpdateUserLocation: ControlEvent<MKUserLocation> {
         let source = rx_delegate
-            .observe(#selector(MKMapViewDelegate.mapView(_:didUpdateUserLocation:)))
+            .observe(#selector(MKMapViewDelegate.mapView(_:didUpdate:)))
             .map { a in
                 return try castOrThrow(MKUserLocation.self, a[1])
             }
@@ -137,7 +137,7 @@ extension MKMapView {
     public var rx_didChangeUserTrackingMode:
         ControlEvent<(mode: MKUserTrackingMode, animated: Bool)> {
         let source = rx_delegate
-            .observe(#selector(MKMapViewDelegate.mapView(_:didChangeUserTrackingMode:animated:)))
+            .observe(#selector(MKMapViewDelegate.mapView(_:didChange:animated:)))
             .map { a in
                 return (mode: try castOrThrow(Int.self, a[1]),
                     animated: try castOrThrow(Bool.self, a[2]))
@@ -153,7 +153,11 @@ extension MKMapView {
 
     public var rx_didAddAnnotationViews: ControlEvent<[MKAnnotationView]> {
         let source = rx_delegate
-            .observe(#selector(MKMapViewDelegate.mapView(_:didAddAnnotationViews:)))
+            .observe(#selector(
+                (MKMapViewDelegate.mapView(_:didAdd:))!
+                    as (MKMapViewDelegate) -> (MKMapView,[MKAnnotationView]) -> Void
+                )
+            )
             .map { a in
                 return try castOrThrow([MKAnnotationView].self, a[1])
             }
@@ -175,7 +179,7 @@ extension MKMapView {
 
     public var rx_didSelectAnnotationView: ControlEvent<MKAnnotationView> {
         let source = rx_delegate
-            .observe(#selector(MKMapViewDelegate.mapView(_:didSelectAnnotationView:)))
+            .observe(#selector(MKMapViewDelegate.mapView(_:didSelect:)))
             .map { a in
                 return try castOrThrow(MKAnnotationView.self, a[1])
             }
@@ -184,7 +188,7 @@ extension MKMapView {
 
     public var rx_didDeselectAnnotationView: ControlEvent<MKAnnotationView> {
         let source = rx_delegate
-            .observe(#selector(MKMapViewDelegate.mapView(_:didDeselectAnnotationView:)))
+            .observe(#selector(MKMapViewDelegate.mapView(_:didDeselect:)))
             .map { a in
                 return try castOrThrow(MKAnnotationView.self, a[1])
             }
@@ -194,7 +198,7 @@ extension MKMapView {
     public var rx_didChangeState:
         ControlEvent<(view: MKAnnotationView, newState: MKAnnotationViewDragState, oldState: MKAnnotationViewDragState)> {
         let source = rx_delegate
-            .observe(#selector(MKMapViewDelegate.mapView(_:annotationView:didChangeDragState:fromOldState:)))
+            .observe(#selector(MKMapViewDelegate.mapView(_:annotationView:didChange:fromOldState:)))
             .map { a in
                 return (view: try castOrThrow(MKAnnotationView.self, a[1]),
                     newState: try castOrThrow(UInt.self, a[2]),
@@ -212,7 +216,11 @@ extension MKMapView {
 
     public var rx_didAddOverlayRenderers: ControlEvent<[MKOverlayRenderer]> {
         let source = rx_delegate
-            .observe(#selector(MKMapViewDelegate.mapView(_:didAddOverlayRenderers:)))
+            .observe(#selector(
+                (MKMapViewDelegate.mapView(_:didAdd:))!
+                    as (MKMapViewDelegate) -> (MKMapView,[MKOverlayRenderer]) -> Void
+                )
+            )
             .map { a in
                 return try castOrThrow([MKOverlayRenderer].self, a[1])
             }
