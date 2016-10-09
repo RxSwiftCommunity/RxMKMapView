@@ -19,15 +19,17 @@ view.addSubview(mapView)
 
 mapView.rx_WillStartLoadingMap
     .asDriver()
-    .driveeNext {
+    .drive(onNext: {
         print("rx_WillStartLoadingMap")
-    }.addDisposableTo(disposeBag)
+    })
+    .addDisposableTo(disposeBag)
 
 mapView.rx_DidFinishLoadingMap
     .asDriver()
-    .driveNext {
+    .drive(onNext: {
         print("rx_DidFinishLoadingMap")
-    }.addDisposableTo(disposeBag)
+    })
+    .addDisposableTo(disposeBag)
 ```
 DESC
 
@@ -37,7 +39,7 @@ DESC
   s.source           = { :git => 'https://github.com/inkyfox/RxMKMapView.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/sger'
 
-  s.platform     = :ios, '9.0'
+  s.platform     = :ios, '8.0'
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/**/*'
