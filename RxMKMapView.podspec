@@ -33,10 +33,10 @@ mapView.rx.DidFinishLoadingMap
 ```
 DESC
 
-  s.homepage         = 'https://github.com/inkyfox/RxMKMapView'
+  s.homepage         = 'https://github.com/RxSwiftCommunity/RxMKMapView'
   s.license          = 'MIT'
   s.author           = { 'Spiros Gerokostas' => 'spiros.gerokostas@gmail.com' }
-  s.source           = { :git => 'https://github.com/inkyfox/RxMKMapView.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/RxSwiftCommunity/RxMKMapView.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/sger'
 
   s.platform     = :ios, '8.0'
