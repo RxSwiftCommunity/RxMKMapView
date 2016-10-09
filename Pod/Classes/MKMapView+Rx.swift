@@ -33,7 +33,7 @@ extension Reactive where Base : MKMapView {
 
     public var regionWillChangeAnimated: ControlEvent<Bool> {
         let source = delegate
-            .observe(#selector(MKMapViewDelegate.mapView(_:regionWillChangeAnimated:)))
+            .methodInvoked(#selector(MKMapViewDelegate.mapView(_:regionWillChangeAnimated:)))
             .map { a in
                 return try castOrThrow(Bool.self, a[1])
             }
@@ -42,7 +42,7 @@ extension Reactive where Base : MKMapView {
 
     public var regionDidChangeAnimated: ControlEvent<Bool> {
         let source = delegate
-            .observe(#selector(MKMapViewDelegate.mapView(_:regionDidChangeAnimated:)))
+            .methodInvoked(#selector(MKMapViewDelegate.mapView(_:regionDidChangeAnimated:)))
             .map { a in
                 return try castOrThrow(Bool.self, a[1])
             }
@@ -53,7 +53,7 @@ extension Reactive where Base : MKMapView {
 
     public var willStartLoadingMap: ControlEvent<Void>{
         let source = delegate
-            .observe(#selector(MKMapViewDelegate.mapViewWillStartLoadingMap(_:)))
+            .methodInvoked(#selector(MKMapViewDelegate.mapViewWillStartLoadingMap(_:)))
             .map { _ in
                 return()
             }
@@ -62,7 +62,7 @@ extension Reactive where Base : MKMapView {
 
     public var didFinishLoadingMap: ControlEvent<Void>{
         let source = delegate
-            .observe(#selector(MKMapViewDelegate.mapViewDidFinishLoadingMap(_:)))
+            .methodInvoked(#selector(MKMapViewDelegate.mapViewDidFinishLoadingMap(_:)))
             .map { _ in
                 return()
             }
@@ -71,7 +71,7 @@ extension Reactive where Base : MKMapView {
 
     public var didFailLoadingMap: Observable<NSError>{
         return delegate
-            .observe(#selector(MKMapViewDelegate.mapViewDidFailLoadingMap(_:withError:)))
+            .methodInvoked(#selector(MKMapViewDelegate.mapViewDidFailLoadingMap(_:withError:)))
             .map { a in
                 return try castOrThrow(NSError.self, a[1])
             }
@@ -81,7 +81,7 @@ extension Reactive where Base : MKMapView {
 
     public var willStartRenderingMap: ControlEvent<Void>{
         let source = delegate
-            .observe(#selector(MKMapViewDelegate.mapViewWillStartRenderingMap(_:)))
+            .methodInvoked(#selector(MKMapViewDelegate.mapViewWillStartRenderingMap(_:)))
             .map { _ in
                 return()
             }
@@ -90,7 +90,7 @@ extension Reactive where Base : MKMapView {
 
     public var didFinishRenderingMap: ControlEvent<Bool> {
         let source = delegate
-            .observe(#selector(MKMapViewDelegate.mapViewDidFinishRenderingMap(_:fullyRendered:)))
+            .methodInvoked(#selector(MKMapViewDelegate.mapViewDidFinishRenderingMap(_:fullyRendered:)))
             .map { a in
                 return try castOrThrow(Bool.self, a[1])
             }
@@ -101,7 +101,7 @@ extension Reactive where Base : MKMapView {
 
     public var willStartLocatingUser: ControlEvent<Void> {
         let source = delegate
-            .observe(#selector(MKMapViewDelegate.mapViewWillStartLocatingUser(_:)))
+            .methodInvoked(#selector(MKMapViewDelegate.mapViewWillStartLocatingUser(_:)))
             .map { _ in
                 return()
             }
@@ -110,7 +110,7 @@ extension Reactive where Base : MKMapView {
 
     public var didStopLocatingUser: ControlEvent<Void> {
         let source = delegate
-            .observe(#selector(MKMapViewDelegate.mapViewDidStopLocatingUser(_:)))
+            .methodInvoked(#selector(MKMapViewDelegate.mapViewDidStopLocatingUser(_:)))
             .map { _ in
                 return()
             }
@@ -119,7 +119,7 @@ extension Reactive where Base : MKMapView {
 
     public var didUpdateUserLocation: ControlEvent<MKUserLocation> {
         let source = delegate
-            .observe(#selector(MKMapViewDelegate.mapView(_:didUpdate:)))
+            .methodInvoked(#selector(MKMapViewDelegate.mapView(_:didUpdate:)))
             .map { a in
                 return try castOrThrow(MKUserLocation.self, a[1])
             }
@@ -128,7 +128,7 @@ extension Reactive where Base : MKMapView {
 
     public var didFailToLocateUserWithError: Observable<NSError> {
         return delegate
-            .observe(#selector(MKMapViewDelegate.mapView(_:didFailToLocateUserWithError:)))
+            .methodInvoked(#selector(MKMapViewDelegate.mapView(_:didFailToLocateUserWithError:)))
             .map { a in
                 return try castOrThrow(NSError.self, a[1])
             }
@@ -137,7 +137,7 @@ extension Reactive where Base : MKMapView {
     public var didChangeUserTrackingMode:
         ControlEvent<(mode: MKUserTrackingMode, animated: Bool)> {
         let source = delegate
-            .observe(#selector(MKMapViewDelegate.mapView(_:didChange:animated:)))
+            .methodInvoked(#selector(MKMapViewDelegate.mapView(_:didChange:animated:)))
             .map { a in
                 return (mode: try castOrThrow(Int.self, a[1]),
                     animated: try castOrThrow(Bool.self, a[2]))
@@ -153,7 +153,7 @@ extension Reactive where Base : MKMapView {
 
     public var didAddAnnotationViews: ControlEvent<[MKAnnotationView]> {
         let source = delegate
-            .observe(#selector(
+            .methodInvoked(#selector(
                 (MKMapViewDelegate.mapView(_:didAdd:))!
                     as (MKMapViewDelegate) -> (MKMapView, [MKAnnotationView]) -> Void
                 )
@@ -167,7 +167,7 @@ extension Reactive where Base : MKMapView {
     public var annotationViewCalloutAccessoryControlTapped:
         ControlEvent<(view: MKAnnotationView, control: UIControl)> {
         let source = delegate
-            .observe(#selector(MKMapViewDelegate.mapView(_:annotationView:calloutAccessoryControlTapped:)))
+            .methodInvoked(#selector(MKMapViewDelegate.mapView(_:annotationView:calloutAccessoryControlTapped:)))
             .map { a in
                 return (view: try castOrThrow(MKAnnotationView.self, a[1]),
                     control: try castOrThrow(UIControl.self, a[2]))
@@ -179,7 +179,7 @@ extension Reactive where Base : MKMapView {
 
     public var didSelectAnnotationView: ControlEvent<MKAnnotationView> {
         let source = delegate
-            .observe(#selector(MKMapViewDelegate.mapView(_:didSelect:)))
+            .methodInvoked(#selector(MKMapViewDelegate.mapView(_:didSelect:)))
             .map { a in
                 return try castOrThrow(MKAnnotationView.self, a[1])
             }
@@ -188,7 +188,7 @@ extension Reactive where Base : MKMapView {
 
     public var didDeselectAnnotationView: ControlEvent<MKAnnotationView> {
         let source = delegate
-            .observe(#selector(MKMapViewDelegate.mapView(_:didDeselect:)))
+            .methodInvoked(#selector(MKMapViewDelegate.mapView(_:didDeselect:)))
             .map { a in
                 return try castOrThrow(MKAnnotationView.self, a[1])
             }
@@ -198,7 +198,7 @@ extension Reactive where Base : MKMapView {
     public var didChangeState:
         ControlEvent<(view: MKAnnotationView, newState: MKAnnotationViewDragState, oldState: MKAnnotationViewDragState)> {
         let source = delegate
-            .observe(#selector(MKMapViewDelegate.mapView(_:annotationView:didChange:fromOldState:)))
+            .methodInvoked(#selector(MKMapViewDelegate.mapView(_:annotationView:didChange:fromOldState:)))
             .map { a in
                 return (view: try castOrThrow(MKAnnotationView.self, a[1]),
                     newState: try castOrThrow(UInt.self, a[2]),
@@ -216,7 +216,7 @@ extension Reactive where Base : MKMapView {
 
     public var didAddOverlayRenderers: ControlEvent<[MKOverlayRenderer]> {
         let source = delegate
-            .observe(#selector(
+            .methodInvoked(#selector(
                 (MKMapViewDelegate.mapView(_:didAdd:))!
                     as (MKMapViewDelegate) -> (MKMapView, [MKOverlayRenderer]) -> Void
                 )
