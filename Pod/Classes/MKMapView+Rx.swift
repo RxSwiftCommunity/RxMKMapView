@@ -18,21 +18,21 @@ func castOrThrow<T>(_ resultType: T.Type, _ object: Any) throws -> T {
     return returnValue
 }
 
-extension MKMapView {
+extension Reactive where Base : MKMapView {
 
     /**
      Reactive wrapper for `delegate`.
 
      For more information take a look at `DelegateProxyType` protocol documentation.
      */
-    public var rx_delegate: DelegateProxy {
-        return proxyForObject(RxMKMapViewDelegateProxy.self, self)
+    public var delegate: DelegateProxy {
+        return proxyForObject(RxMKMapViewDelegateProxy.self, base)
     }
 
     // MARK: Responding to Map Position Changes
 
-    public var rx_regionWillChangeAnimated: ControlEvent<Bool> {
-        let source = rx_delegate
+    public var regionWillChangeAnimated: ControlEvent<Bool> {
+        let source = delegate
             .observe(#selector(MKMapViewDelegate.mapView(_:regionWillChangeAnimated:)))
             .map { a in
                 return try castOrThrow(Bool.self, a[1])
@@ -40,8 +40,8 @@ extension MKMapView {
         return ControlEvent(events: source)
     }
 
-    public var rx_regionDidChangeAnimated: ControlEvent<Bool> {
-        let source = rx_delegate
+    public var regionDidChangeAnimated: ControlEvent<Bool> {
+        let source = delegate
             .observe(#selector(MKMapViewDelegate.mapView(_:regionDidChangeAnimated:)))
             .map { a in
                 return try castOrThrow(Bool.self, a[1])
@@ -51,8 +51,8 @@ extension MKMapView {
 
     // MARK: Loading the Map Data
 
-    public var rx_willStartLoadingMap: ControlEvent<Void>{
-        let source = rx_delegate
+    public var willStartLoadingMap: ControlEvent<Void>{
+        let source = delegate
             .observe(#selector(MKMapViewDelegate.mapViewWillStartLoadingMap(_:)))
             .map { _ in
                 return()
@@ -60,8 +60,8 @@ extension MKMapView {
         return ControlEvent(events: source)
     }
 
-    public var rx_didFinishLoadingMap: ControlEvent<Void>{
-        let source = rx_delegate
+    public var didFinishLoadingMap: ControlEvent<Void>{
+        let source = delegate
             .observe(#selector(MKMapViewDelegate.mapViewDidFinishLoadingMap(_:)))
             .map { _ in
                 return()
@@ -69,8 +69,8 @@ extension MKMapView {
         return ControlEvent(events: source)
     }
 
-    public var rx_didFailLoadingMap: Observable<NSError>{
-        return rx_delegate
+    public var didFailLoadingMap: Observable<NSError>{
+        return delegate
             .observe(#selector(MKMapViewDelegate.mapViewDidFailLoadingMap(_:withError:)))
             .map { a in
                 return try castOrThrow(NSError.self, a[1])
@@ -79,8 +79,8 @@ extension MKMapView {
 
     // MARK: Responding to Rendering Events
 
-    public var rx_willStartRenderingMap: ControlEvent<Void>{
-        let source = rx_delegate
+    public var willStartRenderingMap: ControlEvent<Void>{
+        let source = delegate
             .observe(#selector(MKMapViewDelegate.mapViewWillStartRenderingMap(_:)))
             .map { _ in
                 return()
@@ -88,8 +88,8 @@ extension MKMapView {
         return ControlEvent(events: source)
     }
 
-    public var rx_didFinishRenderingMap: ControlEvent<Bool> {
-        let source = rx_delegate
+    public var didFinishRenderingMap: ControlEvent<Bool> {
+        let source = delegate
             .observe(#selector(MKMapViewDelegate.mapViewDidFinishRenderingMap(_:fullyRendered:)))
             .map { a in
                 return try castOrThrow(Bool.self, a[1])
@@ -99,8 +99,8 @@ extension MKMapView {
 
     // MARK: Tracking the User Location
 
-    public var rx_willStartLocatingUser: ControlEvent<Void> {
-        let source = rx_delegate
+    public var willStartLocatingUser: ControlEvent<Void> {
+        let source = delegate
             .observe(#selector(MKMapViewDelegate.mapViewWillStartLocatingUser(_:)))
             .map { _ in
                 return()
@@ -108,8 +108,8 @@ extension MKMapView {
         return ControlEvent(events: source)
     }
 
-    public var rx_didStopLocatingUser: ControlEvent<Void> {
-        let source = rx_delegate
+    public var didStopLocatingUser: ControlEvent<Void> {
+        let source = delegate
             .observe(#selector(MKMapViewDelegate.mapViewDidStopLocatingUser(_:)))
             .map { _ in
                 return()
@@ -117,8 +117,8 @@ extension MKMapView {
         return ControlEvent(events: source)
     }
 
-    public var rx_didUpdateUserLocation: ControlEvent<MKUserLocation> {
-        let source = rx_delegate
+    public var didUpdateUserLocation: ControlEvent<MKUserLocation> {
+        let source = delegate
             .observe(#selector(MKMapViewDelegate.mapView(_:didUpdate:)))
             .map { a in
                 return try castOrThrow(MKUserLocation.self, a[1])
@@ -126,17 +126,17 @@ extension MKMapView {
         return ControlEvent(events: source)
     }
 
-    public var rx_didFailToLocateUserWithError: Observable<NSError> {
-        return rx_delegate
+    public var didFailToLocateUserWithError: Observable<NSError> {
+        return delegate
             .observe(#selector(MKMapViewDelegate.mapView(_:didFailToLocateUserWithError:)))
             .map { a in
                 return try castOrThrow(NSError.self, a[1])
             }
     }
 
-    public var rx_didChangeUserTrackingMode:
+    public var didChangeUserTrackingMode:
         ControlEvent<(mode: MKUserTrackingMode, animated: Bool)> {
-        let source = rx_delegate
+        let source = delegate
             .observe(#selector(MKMapViewDelegate.mapView(_:didChange:animated:)))
             .map { a in
                 return (mode: try castOrThrow(Int.self, a[1]),
@@ -151,11 +151,11 @@ extension MKMapView {
 
     // MARK: Responding to Annotation Views
 
-    public var rx_didAddAnnotationViews: ControlEvent<[MKAnnotationView]> {
-        let source = rx_delegate
+    public var didAddAnnotationViews: ControlEvent<[MKAnnotationView]> {
+        let source = delegate
             .observe(#selector(
                 (MKMapViewDelegate.mapView(_:didAdd:))!
-                    as (MKMapViewDelegate) -> (MKMapView,[MKAnnotationView]) -> Void
+                    as (MKMapViewDelegate) -> (MKMapView, [MKAnnotationView]) -> Void
                 )
             )
             .map { a in
@@ -164,9 +164,9 @@ extension MKMapView {
         return ControlEvent(events: source)
     }
 
-    public var rx_annotationViewCalloutAccessoryControlTapped:
+    public var annotationViewCalloutAccessoryControlTapped:
         ControlEvent<(view: MKAnnotationView, control: UIControl)> {
-        let source = rx_delegate
+        let source = delegate
             .observe(#selector(MKMapViewDelegate.mapView(_:annotationView:calloutAccessoryControlTapped:)))
             .map { a in
                 return (view: try castOrThrow(MKAnnotationView.self, a[1]),
@@ -177,8 +177,8 @@ extension MKMapView {
 
     // MARK: Selecting Annotation Views
 
-    public var rx_didSelectAnnotationView: ControlEvent<MKAnnotationView> {
-        let source = rx_delegate
+    public var didSelectAnnotationView: ControlEvent<MKAnnotationView> {
+        let source = delegate
             .observe(#selector(MKMapViewDelegate.mapView(_:didSelect:)))
             .map { a in
                 return try castOrThrow(MKAnnotationView.self, a[1])
@@ -186,8 +186,8 @@ extension MKMapView {
         return ControlEvent(events: source)
     }
 
-    public var rx_didDeselectAnnotationView: ControlEvent<MKAnnotationView> {
-        let source = rx_delegate
+    public var didDeselectAnnotationView: ControlEvent<MKAnnotationView> {
+        let source = delegate
             .observe(#selector(MKMapViewDelegate.mapView(_:didDeselect:)))
             .map { a in
                 return try castOrThrow(MKAnnotationView.self, a[1])
@@ -195,9 +195,9 @@ extension MKMapView {
         return ControlEvent(events: source)
     }
 
-    public var rx_didChangeState:
+    public var didChangeState:
         ControlEvent<(view: MKAnnotationView, newState: MKAnnotationViewDragState, oldState: MKAnnotationViewDragState)> {
-        let source = rx_delegate
+        let source = delegate
             .observe(#selector(MKMapViewDelegate.mapView(_:annotationView:didChange:fromOldState:)))
             .map { a in
                 return (view: try castOrThrow(MKAnnotationView.self, a[1]),
@@ -214,11 +214,11 @@ extension MKMapView {
 
     // MARK: Managing the Display of Overlays
 
-    public var rx_didAddOverlayRenderers: ControlEvent<[MKOverlayRenderer]> {
-        let source = rx_delegate
+    public var didAddOverlayRenderers: ControlEvent<[MKOverlayRenderer]> {
+        let source = delegate
             .observe(#selector(
                 (MKMapViewDelegate.mapView(_:didAdd:))!
-                    as (MKMapViewDelegate) -> (MKMapView,[MKOverlayRenderer]) -> Void
+                    as (MKMapViewDelegate) -> (MKMapView, [MKOverlayRenderer]) -> Void
                 )
             )
             .map { a in

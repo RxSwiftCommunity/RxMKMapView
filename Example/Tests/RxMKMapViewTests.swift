@@ -25,12 +25,12 @@ class RxMKMapViewTests: XCTestCase {
         
         
         autoreleasepool {
-            _ = mapView.rx_didChangeState
-                .subscribeNext { (view, newState, oldState) -> Void in
+            _ = mapView.rx.didChangeState
+                .subscribe(onNext: { (view, newState, oldState) -> Void in
                     resultView = view
                     resultNewState = newState
                     resultOldState = oldState
-                }
+                })
             
             let newState = MKAnnotationViewDragState.starting
             let oldState = MKAnnotationViewDragState.dragging
@@ -53,10 +53,10 @@ class RxMKMapViewTests: XCTestCase {
         
         autoreleasepool {
             
-            _ = mapView.rx_regionWillChangeAnimated
-                .subscribeNext {
+            _ = mapView.rx.regionWillChangeAnimated
+                .subscribe(onNext: {
                     changed = $0
-                }
+                })
             
             mapView.delegate!.mapView!(mapView, regionWillChangeAnimated: true)
         }
@@ -70,10 +70,10 @@ class RxMKMapViewTests: XCTestCase {
         
         autoreleasepool {
             
-            _ = mapView.rx_regionDidChangeAnimated
-                .subscribeNext {
+            _ = mapView.rx.regionDidChangeAnimated
+                .subscribe(onNext: {
                     changed = $0
-                }
+                })
             
             mapView.delegate!.mapView!(mapView, regionDidChangeAnimated: true)
         }
@@ -87,10 +87,10 @@ class RxMKMapViewTests: XCTestCase {
         
         autoreleasepool {
             
-            _ = mapView.rx_willStartLoadingMap
-                .subscribeNext {
+            _ = mapView.rx.willStartLoadingMap
+                .subscribe(onNext: {
                     called = true
-                }
+                })
             
             mapView.delegate!.mapViewWillStartLoadingMap!(mapView)
         }
@@ -104,10 +104,10 @@ class RxMKMapViewTests: XCTestCase {
         
         autoreleasepool {
             
-            _ = mapView.rx_didFinishLoadingMap
-                .subscribeNext {
+            _ = mapView.rx.didFinishLoadingMap
+                .subscribe(onNext: {
                     called = true
-                }
+                })
             
             mapView.delegate!.mapViewDidFinishLoadingMap!(mapView)
         }
@@ -121,10 +121,10 @@ class RxMKMapViewTests: XCTestCase {
         
         autoreleasepool {
             
-            _ = mapView.rx_didFailLoadingMap
-                .subscribeNext {
+            _ = mapView.rx.didFailLoadingMap
+                .subscribe(onNext: {
                     error = $0
-                }
+                })
             
             mapView.delegate!.mapViewDidFailLoadingMap!(mapView, withError: dummyError)
         }
@@ -139,10 +139,10 @@ class RxMKMapViewTests: XCTestCase {
         
         autoreleasepool {
             
-            _ = mapView.rx_willStartRenderingMap
-                .subscribeNext {
+            _ = mapView.rx.willStartRenderingMap
+                .subscribe(onNext: {
                     called = true
-                }
+                })
             
             mapView.delegate!.mapViewWillStartRenderingMap!(mapView)
         }
@@ -156,10 +156,10 @@ class RxMKMapViewTests: XCTestCase {
         
         autoreleasepool {
             
-            _ = mapView.rx_didFinishRenderingMap
-                .subscribeNext {
+            _ = mapView.rx.didFinishRenderingMap
+                .subscribe(onNext: {
                     called = $0
-                }
+                })
             
             mapView.delegate!.mapViewDidFinishRenderingMap!(mapView, fullyRendered: true)
         }
@@ -173,10 +173,10 @@ class RxMKMapViewTests: XCTestCase {
         
         autoreleasepool {
             
-            _ = mapView.rx_willStartLocatingUser
-                .subscribeNext {
+            _ = mapView.rx.willStartLocatingUser
+                .subscribe(onNext: {
                     called = true
-                }
+                })
             
             mapView.delegate!.mapViewWillStartLocatingUser!(mapView)
         }
@@ -190,10 +190,10 @@ class RxMKMapViewTests: XCTestCase {
         
         autoreleasepool {
             
-            _ = mapView.rx_didStopLocatingUser
-                .subscribeNext {
+            _ = mapView.rx.didStopLocatingUser
+                .subscribe(onNext: {
                     called = true
-                }
+                })
             
             mapView.delegate!.mapViewDidStopLocatingUser!(mapView)
         }
@@ -207,10 +207,11 @@ class RxMKMapViewTests: XCTestCase {
         
         autoreleasepool {
             
-            _ = mapView.rx_didUpdateUserLocation
-                .subscribeNext {
+            _ = mapView.rx.didUpdateUserLocation
+                .subscribe(onNext: {
                     userLocation = $0
-                }
+                })
+            
             let location = MKUserLocation()
             
             mapView.delegate!.mapView!(mapView, didUpdate: location)
@@ -226,10 +227,10 @@ class RxMKMapViewTests: XCTestCase {
         
         autoreleasepool {
             
-            _ = mapView.rx_didFailToLocateUserWithError
-                .subscribeNext {
+            _ = mapView.rx.didFailToLocateUserWithError
+                .subscribe(onNext: {
                     error = $0
-                }
+                })
             
             mapView.delegate!.mapView!(mapView, didFailToLocateUserWithError: dummyError)
         }
@@ -246,11 +247,12 @@ class RxMKMapViewTests: XCTestCase {
         
         autoreleasepool {
             
-            _ = mapView.rx_didChangeUserTrackingMode
-                .subscribeNext {
+            _ = mapView.rx.didChangeUserTrackingMode
+                .subscribe(onNext: {
                     resultTrakingMode = $0.mode
                     animated = $0.animated
-                }
+                })
+            
             mapView.delegate!.mapView!(mapView, didChange: trakingMode, animated: true)
         }
         
@@ -265,10 +267,11 @@ class RxMKMapViewTests: XCTestCase {
         
         let views = [MKAnnotationView()]
         autoreleasepool {
-            _ = mapView.rx_didAddAnnotationViews
-                .subscribeNext {
+            _ = mapView.rx.didAddAnnotationViews
+                .subscribe(onNext: {
                     resultViews = $0
-                }
+                })
+            
             mapView.delegate!.mapView!(mapView, didAdd: views)
         }
         
@@ -285,11 +288,12 @@ class RxMKMapViewTests: XCTestCase {
         let control = UIControl()
         
         autoreleasepool {
-            _ = mapView.rx_annotationViewCalloutAccessoryControlTapped
-                .subscribeNext {
+            _ = mapView.rx.annotationViewCalloutAccessoryControlTapped
+                .subscribe(onNext: {
                     resultView = $0.view
                     resultControl = $0.control
-                }
+                })
+            
             mapView.delegate!.mapView!(mapView,
                 annotationView: view,
                 calloutAccessoryControlTapped: control)
@@ -308,10 +312,11 @@ class RxMKMapViewTests: XCTestCase {
         let view = MKAnnotationView()
         
         autoreleasepool {
-            _ = mapView.rx_didSelectAnnotationView
-                .subscribeNext {
+            _ = mapView.rx.didSelectAnnotationView
+                .subscribe(onNext: {
                     resultView = $0
-            }
+            })
+            
             mapView.delegate!.mapView!(mapView, didSelect: view)
         }
         
@@ -326,10 +331,11 @@ class RxMKMapViewTests: XCTestCase {
         let view = MKAnnotationView()
         
         autoreleasepool {
-            _ = mapView.rx_didDeselectAnnotationView
-                .subscribeNext {
+            _ = mapView.rx.didDeselectAnnotationView
+                .subscribe(onNext: {
                     resultView = $0
-            }
+            })
+            
             mapView.delegate!.mapView!(mapView, didDeselect: view)
         }
         
@@ -344,10 +350,11 @@ class RxMKMapViewTests: XCTestCase {
         let overlayRenders = [MKOverlayRenderer()]
         
         autoreleasepool {
-            _ = mapView.rx_didAddOverlayRenderers
-                .subscribeNext {
+            _ = mapView.rx.didAddOverlayRenderers
+                .subscribe(onNext: {
                     resultView = $0
-            }
+            })
+            
             mapView.delegate!.mapView!(mapView, didAdd: overlayRenders)
         }
         

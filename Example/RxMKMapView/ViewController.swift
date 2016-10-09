@@ -23,17 +23,19 @@ class ViewController: UIViewController {
         let mapView = MKMapView(frame: view.frame)
         view.addSubview(mapView)
 
-        mapView.rx_willStartLoadingMap
+        mapView.rx.willStartLoadingMap
             .asDriver()
-            .driveNext {
+            .drive(onNext: {
                 print("map started loaded")
-            }.addDisposableTo(disposeBag)
+            })
+            .addDisposableTo(disposeBag)
 
-        mapView.rx_didFinishLoadingMap
+        mapView.rx.didFinishLoadingMap
             .asDriver()
-            .driveNext {
+            .drive(onNext: {
                 print("map finished loaded")
-            }.addDisposableTo(disposeBag)
+            })
+            .addDisposableTo(disposeBag)
     }
 
     override func didReceiveMemoryWarning() {
