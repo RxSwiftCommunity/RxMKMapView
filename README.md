@@ -28,21 +28,23 @@ view.addSubview(mapView)
 
 // MARK: Responding to Loading Events
 
-mapView.rx_willStartLoadingMap
-.subscribeNext {
+mapView.rx.willStartLoadingMap
+    .subscribe(onNext: {
 	print("rx_willStartLoadingMap")
-}.addDisposableTo(disposeBag)
+    })
+    .addDisposableTo(disposeBag)
 
-mapView.rx_didFinishLoadingMap
-.subscribeNext { _ in
+mapView.rx.didFinishLoadingMap
+    .subscribe(onNext { _ in
 	print("rx_didFinishLoadingMap")
-}.addDisposableTo(disposeBag)
+    })
+    .addDisposableTo(disposeBag)
 
 ```
 
 ## Requirements
 
-RxMKMapView requires Swift 2.0 and RxSwift (2.2.0).
+RxMKMapView requires Swift 3.0 and RxSwift (3.0.0-beta.2).
 
 ## License
 
