@@ -26,7 +26,7 @@ extension Reactive where Base : MKMapView {
      For more information take a look at `DelegateProxyType` protocol documentation.
      */
     public var delegate: DelegateProxy {
-        return proxyForObject(RxMKMapViewDelegateProxy.self, base)
+        return RxMKMapViewDelegateProxy.proxyForObject(base)
     }
 
     // MARK: Responding to Map Position Changes
