@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'RxMKMapView'
-  s.version          = '2.1.0'
+  s.version          = '3.0.0'
   s.summary          = 'Reactive wrapper for MKMapView `delegate`'
   s.description      = <<-DESC
 RxMKMapView is a Reactive wrapper for MKMapView `delegate`.
@@ -17,24 +17,26 @@ RxMKMapView is a Reactive wrapper for MKMapView `delegate`.
 let mapView = MKMapView(frame: view.frame)
 view.addSubview(mapView)
 
-mapView.rx_WillStartLoadingMap
+mapView.rx.WillStartLoadingMap
     .asDriver()
-    .driveeNext {
-        print("rx_WillStartLoadingMap")
-    }.addDisposableTo(disposeBag)
+    .drive(onNext: {
+        print("rx.WillStartLoadingMap")
+    })
+    .addDisposableTo(disposeBag)
 
-mapView.rx_DidFinishLoadingMap
+mapView.rx.DidFinishLoadingMap
     .asDriver()
-    .driveNext {
-        print("rx_DidFinishLoadingMap")
-    }.addDisposableTo(disposeBag)
+    .drive(onNext: {
+        print("rx.DidFinishLoadingMap")
+    })
+    .addDisposableTo(disposeBag)
 ```
 DESC
 
-  s.homepage         = 'https://github.com/sger/RxMKMapView'
+  s.homepage         = 'https://github.com/RxSwiftCommunity/RxMKMapView'
   s.license          = 'MIT'
   s.author           = { 'Spiros Gerokostas' => 'spiros.gerokostas@gmail.com' }
-  s.source           = { :git => 'https://github.com/sger/RxMKMapView.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/RxSwiftCommunity/RxMKMapView.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/sger'
 
   s.platform     = :ios, '8.0'
@@ -45,7 +47,7 @@ DESC
     'RxMKMapView' => ['Pod/Assets/*.png']
   }
 
-  s.dependency 'RxCocoa', '~> 2'
-  s.dependency 'RxSwift', '~> 2'
+  s.dependency 'RxCocoa', '~> 3.0.0'
+  s.dependency 'RxSwift', '~> 3.0.0'
   s.frameworks = 'Foundation'
 end
