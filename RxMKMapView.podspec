@@ -47,7 +47,7 @@ DESC
     'RxMKMapView' => ['Pod/Assets/*.png']
   }
 
-  s.dependency 'RxCocoa', '~> 3.0.0'
-  s.dependency 'RxSwift', '~> 3.0.0'
+  s.dependency 'RxCocoa', '~> 3.0'
+  s.dependency 'RxSwift', '~> 3.0'
   s.frameworks = 'Foundation'
 end
