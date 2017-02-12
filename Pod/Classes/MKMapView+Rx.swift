@@ -226,4 +226,36 @@ extension Reactive where Base : MKMapView {
             }
         return ControlEvent(events: source)
     }
+    
+    // MARK: Binding annotation to the Map
+    
+    public func annotations<S: Sequence, O: ObservableType> (_ source: O)
+        -> (_ transform: @escaping (S.Iterator.Element) -> MKAnnotation)
+        -> Disposable where O.E == S {
+            
+            return { factory in
+                source.map { elements -> [MKAnnotation] in
+                    elements.map(factory)
+                }
+                .bindTo(self.annotations)
+            }
+    }
+    
+    public func annotations<O: ObservableType> (_ source: O)
+        -> Disposable where O.E == [MKAnnotation] {
+        return source.subscribe(AnyObserver { event in
+            if case let .next(element) = event {
+                self.base.addAnnotations(element as! [MKAnnotation])
+            }
+        })
+    }
+    
+    public func annotations<O: ObservableType> (_ source: O)
+        -> Disposable where O.E: MKAnnotation {
+        return source.subscribe(AnyObserver { event in
+            if case let .next(element) = event {
+                self.base.addAnnotation(element)
+            }
+        })
+    }
 }
