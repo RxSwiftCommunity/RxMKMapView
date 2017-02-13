@@ -245,7 +245,7 @@ extension Reactive where Base : MKMapView {
         -> Disposable where O.E == [MKAnnotation] {
         return source.subscribe(AnyObserver { event in
             if case let .next(element) = event {
-                self.base.addAnnotations(element as! [MKAnnotation])
+                self.base.addAnnotations(element)
             }
         })
     }
