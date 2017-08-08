@@ -229,33 +229,27 @@ extension Reactive where Base : MKMapView {
     
     // MARK: Binding annotation to the Map
     
-    public func annotations<S: Sequence, O: ObservableType> (_ source: O)
-        -> (_ transform: @escaping (S.Iterator.Element) -> MKAnnotation)
-        -> Disposable where O.E == S {
-            
-            return { factory in
-                source.map { elements -> [MKAnnotation] in
-                    elements.map(factory)
-                }
-                .bind(to: self.annotations)
-            }
+    public func annotations<O: ObservableType>
+        (_ source: O)
+        -> Disposable
+        where O.E == [MKAnnotation] {
+            let dataSource = RxMapViewReactiveDataSource()
+            return self.annotations(dataSource: dataSource)(source)
     }
     
-    public func annotations<O: ObservableType> (_ source: O)
-        -> Disposable where O.E == [MKAnnotation] {
-        return source.subscribe(AnyObserver { event in
-            if case let .next(element) = event {
-                self.base.addAnnotations(element)
+    public func annotations<
+        DataSource: RxMapViewDataSourceType,
+        O: ObservableType>
+        (dataSource: DataSource)
+        -> (_ source: O)
+        -> Disposable
+        where O.E == [DataSource.Element],
+        DataSource.Element: MKAnnotation {
+            return { source in
+                return source
+                    .subscribe({ event in
+                        dataSource.mapView(self.base, observedEvent: event)
+                    })
             }
-        })
-    }
-    
-    public func annotations<O: ObservableType> (_ source: O)
-        -> Disposable where O.E: MKAnnotation {
-        return source.subscribe(AnyObserver { event in
-            if case let .next(element) = event {
-                self.base.addAnnotation(element)
-            }
-        })
     }
 }
