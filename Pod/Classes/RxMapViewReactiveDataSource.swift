@@ -11,13 +11,14 @@ import MapKit
 import RxSwift
 import RxCocoa
 
-public class RxMapViewReactiveDataSource: RxMapViewDataSourceType {
+public class RxMapViewReactiveDataSource<S: MKAnnotation>
+    : RxMapViewDataSourceType {
     
-    public typealias Element = MKAnnotation
+    public typealias Element = S
     
-    var currentAnnotations: [MKAnnotation] = []
+    var currentAnnotations: [S] = []
     
-    public func mapView(_ mapView: MKMapView, observedEvent: Event<[MKAnnotation]>) {
+    public func mapView(_ mapView: MKMapView, observedEvent: Event<[S]>) {
         UIBindingObserver(UIElement: self) { (animator, newAnnotations) in
             DispatchQueue.main.async {
                 mapView.removeAnnotations(self.currentAnnotations)

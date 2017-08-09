@@ -229,12 +229,13 @@ extension Reactive where Base : MKMapView {
     
     // MARK: Binding annotation to the Map
     
-    public func annotations<O: ObservableType>
+    public func annotations<
+        A: MKAnnotation,
+        O: ObservableType>
         (_ source: O)
         -> Disposable
-        where O.E == [MKAnnotation] {
-            let dataSource = RxMapViewReactiveDataSource()
-            return self.annotations(dataSource: dataSource)(source)
+        where O.E == [A] {
+            return self.annotations(dataSource: RxMapViewReactiveDataSource())(source)
     }
     
     public func annotations<
