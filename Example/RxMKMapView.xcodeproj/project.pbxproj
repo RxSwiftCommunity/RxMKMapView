@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B70B86B1F4077E70036CB3C /* DiffTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B70B86A1F4077E70036CB3C /* DiffTests.swift */; };
 		56AC96251C3ACCC100061156 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56AC96241C3ACCC100061156 /* MapKit.framework */; };
 		56B7C8ED1C3AECE3002DF551 /* RxMKMapViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B7C8EC1C3AECE3002DF551 /* RxMKMapViewTests.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		1AC9015127B88B5AE775B73F /* Pods_RxMKMapView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxMKMapView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B70B86A1F4077E70036CB3C /* DiffTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiffTests.swift; sourceTree = "<group>"; };
 		34399741CF9E72DF0DC8A4C4 /* Pods-RxMKMapView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxMKMapView_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxMKMapView_Tests/Pods-RxMKMapView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		56AC96241C3ACCC100061156 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		56B7C8EC1C3AECE3002DF551 /* RxMKMapViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxMKMapViewTests.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			children = (
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 				56B7C8EC1C3AECE3002DF551 /* RxMKMapViewTests.swift */,
+				2B70B86A1F4077E70036CB3C /* DiffTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B70B86B1F4077E70036CB3C /* DiffTests.swift in Sources */,
 				56B7C8ED1C3AECE3002DF551 /* RxMKMapViewTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

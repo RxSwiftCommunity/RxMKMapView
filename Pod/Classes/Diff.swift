@@ -9,7 +9,7 @@
 import Foundation
 import MapKit
 
-public struct Diff<T: AnyObject> {
+public struct Diff<T: NSObjectProtocol> {
     public let removed: [T]
     public let added: [T]
 }
