@@ -32,8 +32,9 @@ fileprivate struct BoxedHashable<T: NSObjectProtocol>: Hashable {
 }
 
 fileprivate struct Entry<T> {
-    public let prev: T?
-    public let next: T?
+
+    public var prev: T? = nil
+    public var next: T? = nil
 
     func isRemoval() -> Bool {
         return prev != nil && next == nil
@@ -53,13 +54,15 @@ public extension Diff {
         var entries = Dictionary<BoxedHashable<T>, Entry<T>>()
 
         for item in previous {
-            let entry = entries[BoxedHashable(item)]
-            entries[BoxedHashable(item)] = Entry(prev: item, next: entry?.next)
+            var entry = entries[BoxedHashable(item)] ?? Entry()
+            entry.prev = item
+            entries[BoxedHashable(item)] = entry
         }
 
         for item in next {
-            let entry = entries[BoxedHashable(item)]
-            entries[BoxedHashable(item)] = Entry(prev: entry?.prev, next: item)
+            var entry = entries[BoxedHashable(item)] ?? Entry()
+            entry.next = item
+            entries[BoxedHashable(item)] = entry
         }
 
         var removed: [T] = []
