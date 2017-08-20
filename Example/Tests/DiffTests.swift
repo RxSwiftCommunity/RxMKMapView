@@ -48,7 +48,7 @@ class DiffTests: XCTestCase {
     
     func testPerformanceWhenNoChange() {
         
-        let items = (1...10000).map{ Item("\($0)") }
+        let items = (1...40000).map{ Item("\($0)") }
         
         self.measure {
             let diff = Diff.calculateFrom(previous: items, next: items)
@@ -59,7 +59,7 @@ class DiffTests: XCTestCase {
     
     func testPerformanceWhenEverythingChanges() {
         
-        let half = 1000
+        let half = 20000
         let items = (1...(2*half)).map{ Item("\($0)") }
         let firstPart = Array(items[0..<half])
         let secondPart = Array(items[half..<2*half])
@@ -73,7 +73,7 @@ class DiffTests: XCTestCase {
     
     func testPerformanceWhenSomeChange() {
         
-        let quarter = 1000
+        let quarter = 10000
         let items = (1...(4*quarter)).map{ Item("\($0)") }
         let firstPart = Array(items[0..<3*quarter])
         let secondPart = Array(items[quarter..<4*quarter])
