@@ -540,7 +540,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8775BA766B8F82B4E0ABC278 /* Pods-RxMKMapView_Example.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = RxMKMapView/Info.plist;
@@ -556,7 +555,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9D16FD9F691197189693F7ED /* Pods-RxMKMapView_Example.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = RxMKMapView/Info.plist;
@@ -572,7 +570,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 34399741CF9E72DF0DC8A4C4 /* Pods-RxMKMapView_Tests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -595,7 +592,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B097D1E934D2F7579AE9F439 /* Pods-RxMKMapView_Tests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
