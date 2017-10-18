@@ -129,6 +129,7 @@
 				TargetAttributes = {
 					572142021DD7A3C000FC5B15 = {
 						CreatedOnToolsVersion = 8.0;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -306,7 +307,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.rxswiftcommunity.RxMKMapView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -329,7 +330,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.rxswiftcommunity.RxMKMapView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
