@@ -399,12 +399,12 @@ class RxMKMapViewTests: XCTestCase {
         
         let exp = self.expectation(description: "wait for annotation")
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             expect(mapView.annotations).to(haveCount(2))
             exp.fulfill()
         }
         
-        waitForExpectations(timeout: 1.0, handler: nil)
+        waitForExpectations(timeout: 3.0, handler: nil)
     }
     
     func test_rx_annotationsClosureBinding() {
