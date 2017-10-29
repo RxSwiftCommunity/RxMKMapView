@@ -3,7 +3,6 @@ language: objective-c
 before_install:
  - gem install cocoapods --no-rdoc --no-ri --no-document --quiet
  - pod repo update --silent
- - pod install --project-directory=Example
+ - pod install --project-directory=Example --repo-update
 script:
   - set -o pipefail && xcodebuild -workspace 'Example/RxMKMapView.xcworkspace' -scheme 'RxMKMapView-Example' -configuration 'Debug' -sdk iphonesimulator -destination platform='iOS Simulator',OS='10.0',name='iPhone 7' build test  | xcpretty -c --test
-
