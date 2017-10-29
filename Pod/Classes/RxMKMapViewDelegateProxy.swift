@@ -10,16 +10,22 @@ import MapKit
 import RxSwift
 import RxCocoa
 
-class RxMKMapViewDelegateProxy: DelegateProxy, MKMapViewDelegate, DelegateProxyType {
+extension MKMapView: HasDelegate {
+    public typealias Delegate = MKMapViewDelegate
+}
 
-    class func currentDelegateFor(_ object: AnyObject) -> AnyObject? {
-        let mapView: MKMapView = (object as? MKMapView)!
-        return mapView.delegate
+class RxMKMapViewDelegateProxy: DelegateProxy<MKMapView, MKMapViewDelegate>, DelegateProxyType, MKMapViewDelegate {
+
+    /// Typed parent object.
+    public weak private(set) var mapView: MKMapView?
+
+    /// - parameter mapView: Parent object for delegate proxy.
+    public init(mapView: ParentObject) {
+        self.mapView = mapView
+        super.init(parentObject: mapView, delegateProxy: RxMKMapViewDelegateProxy.self)
     }
-    
-    class func setCurrentDelegate(_ delegate: AnyObject?, toObject object: AnyObject) {
-        let mapView: MKMapView = (object as? MKMapView)!
-        mapView.delegate = delegate as? MKMapViewDelegate
+
+    static func registerKnownImplementations() {
+        self.register { RxMKMapViewDelegateProxy(mapView: $0) }
     }
-    
 }
