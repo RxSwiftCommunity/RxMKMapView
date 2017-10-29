@@ -28,14 +28,14 @@ class ViewController: UIViewController {
             .drive(onNext: {
                 print("map started loaded")
             })
-            .disposed(by: disposeBag)
+            .addDisposableTo(disposeBag)
 
         mapView.rx.didFinishLoadingMap
             .asDriver()
             .drive(onNext: {
                 print("map finished loaded")
             })
-            .disposed(by: disposeBag)
+            .addDisposableTo(disposeBag)
     }
 
     override func didReceiveMemoryWarning() {
