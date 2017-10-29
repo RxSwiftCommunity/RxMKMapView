@@ -3,8 +3,8 @@ source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
 target 'RxMKMapView_Example' do
-  pod 'RxSwift', '~> 3.0'
-  pod 'RxCocoa', '~> 3.0'
+  pod 'RxSwift', '~> 4.0'
+  pod 'RxCocoa', '~> 4.0'
   pod "RxMKMapView", :path => "../"
 end
 
