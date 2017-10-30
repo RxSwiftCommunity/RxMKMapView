@@ -43,9 +43,6 @@ DESC
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/**/*'
-  s.resource_bundles = {
-    'RxMKMapView' => ['Pod/Assets/*.png']
-  }
 
   s.dependency 'RxCocoa', '~> 3.0'
   s.dependency 'RxSwift', '~> 3.0'

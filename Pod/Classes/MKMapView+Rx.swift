@@ -237,7 +237,7 @@ extension Reactive where Base : MKMapView {
                 source.map { elements -> [MKAnnotation] in
                     elements.map(factory)
                 }
-                .bindTo(self.annotations)
+                .bind(to: self.annotations)
             }
     }
     
