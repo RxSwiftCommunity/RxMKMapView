@@ -44,7 +44,7 @@ DESC
 
   s.source_files = 'Pod/Classes/**/*'
 
-  s.dependency 'RxCocoa', '~> 4.0.0'
-  s.dependency 'RxSwift', '~> 4.0.0'
+  s.dependency 'RxCocoa', '~> 4.0'
+  s.dependency 'RxSwift', '~> 4.0'
   s.frameworks = 'Foundation'
 end
