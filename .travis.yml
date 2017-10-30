@@ -5,4 +5,4 @@ before_install:
  - pod repo update --silent
  - pod install --project-directory=Example --repo-update
 script:
-  - set -o pipefail && xcodebuild -workspace 'Example/RxMKMapView.xcworkspace' -scheme 'RxMKMapView-Example' -configuration 'Debug' -sdk iphonesimulator -destination platform='iOS Simulator',OS='11.0.1',name='iPhone 8' build test  | xcpretty -c --test
+  - set -o pipefail && xcodebuild -workspace 'Example/RxMKMapView.xcworkspace' -scheme 'RxMKMapView-Example' -configuration 'Debug' -sdk iphonesimulator -destination platform='iOS Simulator',OS='10.3.1',name='iPhone 7' build test  | xcpretty -c --test
