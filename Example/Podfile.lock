@@ -4,8 +4,8 @@ PODS:
   - RxCocoa (4.0.0):
     - RxSwift (~> 4.0)
   - RxMKMapView (4.0.0):
-    - RxCocoa (~> 4.0.0)
-    - RxSwift (~> 4.0.0)
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
   - RxSwift (4.0.0)
 
 DEPENDENCIES:
