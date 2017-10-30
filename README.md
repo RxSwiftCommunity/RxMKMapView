@@ -26,20 +26,20 @@ pod "RxMKMapView"
 let mapView = MKMapView(frame: view.frame)
 view.addSubview(mapView)
 
-// MARK: Responding to Loading Events
-
+// MARK: Respond to Loading Events
 mapView.rx.willStartLoadingMap
-    .subscribe(onNext: {
-        print("rx.willStartLoadingMap")
-    })
-    .addDisposableTo(disposeBag)
+       .asDriver()
+       .drive(onNext: {
+           print("map started loadedloading)
+       })
+       .disposed(by: disposeBag)
 
 mapView.rx.didFinishLoadingMap
-    .subscribe(onNext { _ in
-        print("rx.didFinishLoadingMap")
-    })
-    .addDisposableTo(disposeBag)
-
+       .asDriver()
+       .drive(onNext: {
+           print("map finished loading")
+       })
+       .disposed(by: disposeBag)
 ```
 
 ## Requirements
