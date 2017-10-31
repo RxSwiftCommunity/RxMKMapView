@@ -376,7 +376,7 @@ class RxMKMapViewTests: XCTestCase {
         let annotations = [annotation1, annotation2]
         
         _ = Observable.from(annotations)
-            .bindTo(mapView.rx.annotations)
+            .bind(to: mapView.rx.annotations)
         
         expect(mapView.annotations as? [MKPointAnnotation]).to(contain(annotations))
     }
@@ -395,16 +395,16 @@ class RxMKMapViewTests: XCTestCase {
         let annotations: [MKAnnotation] = [annotation1, annotation2]
         
          _ = Observable.of(annotations)
-            .bindTo(mapView.rx.annotations)
+            .bind(to: mapView.rx.annotations)
         
         let exp = self.expectation(description: "wait for annotation")
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             expect(mapView.annotations).to(haveCount(2))
             exp.fulfill()
         }
         
-        waitForExpectations(timeout: 0.2, handler: nil)
+        waitForExpectations(timeout: 1.0, handler: nil)
     }
     
     func test_rx_annotationsClosureBinding() {
@@ -413,7 +413,7 @@ class RxMKMapViewTests: XCTestCase {
         let titles: [String] = ["title1" , "title2"]
         
         _ = Observable.of(titles)
-            .bindTo(mapView.rx.annotations) { title in
+            .bind(to: mapView.rx.annotations) { title in
                 let annotation = MKPointAnnotation()
                 annotation.title = title
                 return annotation

@@ -8,28 +8,43 @@
 
 Pod::Spec.new do |s|
   s.name             = 'RxMKMapView'
-  s.version          = '3.0.0'
+  s.version          = '4.0.0'
   s.summary          = 'Reactive wrapper for MKMapView `delegate`'
   s.description      = <<-DESC
 RxMKMapView is a Reactive wrapper for MKMapView `delegate`.
 
+## Installation
+
+RxMKMapView is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+
+```ruby
+pod "RxMKMapView"
+```
+
+## Example Usages
+
 ```swift
+
+// MARK: Setup MKMapView
+
 let mapView = MKMapView(frame: view.frame)
 view.addSubview(mapView)
 
-mapView.rx.WillStartLoadingMap
-    .asDriver()
-    .drive(onNext: {
-        print("rx.WillStartLoadingMap")
-    })
-    .addDisposableTo(disposeBag)
+// MARK: Respond to Loading Events
+mapView.rx.willStartLoadingMap
+       .asDriver()
+       .drive(onNext: {
+           print("map started loadedloading)
+       })
+       .disposed(by: disposeBag)
 
-mapView.rx.DidFinishLoadingMap
-    .asDriver()
-    .drive(onNext: {
-        print("rx.DidFinishLoadingMap")
-    })
-    .addDisposableTo(disposeBag)
+mapView.rx.didFinishLoadingMap
+       .asDriver()
+       .drive(onNext: {
+           print("map finished loading")
+       })
+       .disposed(by: disposeBag)
 ```
 DESC
 
@@ -43,11 +58,8 @@ DESC
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/**/*'
-  s.resource_bundles = {
-    'RxMKMapView' => ['Pod/Assets/*.png']
-  }
 
-  s.dependency 'RxCocoa', '~> 3.0'
-  s.dependency 'RxSwift', '~> 3.0'
+  s.dependency 'RxCocoa', '~> 4.0'
+  s.dependency 'RxSwift', '~> 4.0'
   s.frameworks = 'Foundation'
 end

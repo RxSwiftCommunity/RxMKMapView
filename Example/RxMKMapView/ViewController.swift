@@ -3,7 +3,7 @@
 //  RxMKMapView
 //
 //  Created by Spiros Gerokostas on 01/04/2016.
-//  Copyright (c) 2016 Spiros Gerokostas. All rights reserved.
+//  Copyright (c) 2016 RxSwift Community. All rights reserved.
 //
 
 import UIKit
@@ -14,11 +14,10 @@ import RxMKMapView
 
 class ViewController: UIViewController {
 
-    var disposeBag = DisposeBag()
+    let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
 
         let mapView = MKMapView(frame: view.frame)
         view.addSubview(mapView)
@@ -28,20 +27,20 @@ class ViewController: UIViewController {
             .drive(onNext: {
                 print("map started loaded")
             })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
 
         mapView.rx.didFinishLoadingMap
             .asDriver()
             .drive(onNext: {
                 print("map finished loaded")
             })
-            .addDisposableTo(disposeBag)
-    }
+            .disposed(by: disposeBag)
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        mapView.rx.regionDidChangeAnimated
+            .asDriver()
+            .drive(onNext: { _ in
+                print("map region changed")
+            })
+            .disposed(by: disposeBag)
     }
-
 }
-
