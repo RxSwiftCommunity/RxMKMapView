@@ -3,7 +3,7 @@ RxMKMapView
 
 RxMKMapView is a [RxSwift](https://github.com/ReactiveX/RxSwift) wrapper for MKMapView (MapKit) `delegate`.
 
-[![Build Status](https://travis-ci.org/RxSwiftCommunity/RxMKMapView.svg?branch=master)](https://travis-ci.org/RxSwiftCommunity/RxMKMapView)
+[![CircleCI](https://circleci.com/gh/RxSwiftCommunity/RxMKMapView.svg?style=svg)](https://circleci.com/gh/RxSwiftCommunity/RxMKMapView)
 [![Version](https://img.shields.io/cocoapods/v/RxMKMapView.svg?style=flat)](http://cocoapods.org/pods/RxMKMapView)
 [![License](https://img.shields.io/cocoapods/l/RxMKMapView.svg?style=flat)](http://cocoapods.org/pods/RxMKMapView)
 [![Platform](https://img.shields.io/cocoapods/p/RxMKMapView.svg?style=flat)](http://cocoapods.org/pods/RxMKMapView)

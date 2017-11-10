@@ -1,0 +1,12 @@
+machine:
+  xcode:
+    version: 9.1
+  environment:
+    LANG: en_US.UTF-8
+dependencies:
+  override:
+    - echo "Skipping CocoaPods Specs install."
+test:
+  override:
+    - set -o pipefail
+    - xcodebuild -workspace 'Example/RxMKMapView.xcworkspace' -scheme 'RxMKMapView-Example' -configuration 'Debug' -destination 'platform=iOS Simulator,name=iPhone 7,OS=11.1' -sdk iphonesimulator build test  | xcpretty -c --test
