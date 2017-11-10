@@ -1,0 +1,12 @@
+machine:
+  xcode:
+    version: 9.0
+  environment:
+    LANG: en_US.UTF-8
+dependencies:
+  cache_directories:
+    - "Carthage"
+test:
+  override:
+    - set -o pipefail
+    - xcodebuild -workspace 'Example/RxMKMapView.xcworkspace' -scheme 'RxMKMapView-Example' -configuration 'Debug' -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.0' -sdk iphonesimulator build test  | xcpretty -c --test
