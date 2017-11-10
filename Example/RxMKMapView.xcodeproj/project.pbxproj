@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1DEAC8E2898CCD958593FB06 /* Pods_RxMKMapView_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC9015127B88B5AE775B73F /* Pods_RxMKMapView_Example.framework */; };
 		56AC96251C3ACCC100061156 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56AC96241C3ACCC100061156 /* MapKit.framework */; };
 		56B7C8ED1C3AECE3002DF551 /* RxMKMapViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B7C8EC1C3AECE3002DF551 /* RxMKMapViewTests.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
@@ -16,6 +15,7 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		78E99DC51FA7B24300AE71FD /* RxEel.png in Resources */ = {isa = PBXBuildFile; fileRef = 78E99DC41FA7B24300AE71FD /* RxEel.png */; };
+		7A2520B86AECB50EE6D579B5 /* Pods_RxMKMapView_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC9015127B88B5AE775B73F /* Pods_RxMKMapView_Example.framework */; };
 		AA5E6D41900F9A06E4DF6BC6 /* Pods_RxMKMapView_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC93465B21AE3575F0D4E358 /* Pods_RxMKMapView_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,7 +59,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				56AC96251C3ACCC100061156 /* MapKit.framework in Frameworks */,
-				1DEAC8E2898CCD958593FB06 /* Pods_RxMKMapView_Example.framework in Frameworks */,
+				7A2520B86AECB50EE6D579B5 /* Pods_RxMKMapView_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -575,10 +575,7 @@
 			baseConfigurationReference = 34399741CF9E72DF0DC8A4C4 /* Pods-RxMKMapView_Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -597,10 +594,7 @@
 			baseConfigurationReference = B097D1E934D2F7579AE9F439 /* Pods-RxMKMapView_Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";

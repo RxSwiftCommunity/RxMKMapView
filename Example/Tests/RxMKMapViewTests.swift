@@ -404,7 +404,7 @@ class RxMKMapViewTests: XCTestCase {
             exp.fulfill()
         }
         
-        waitForExpectations(timeout: 1.0, handler: nil)
+        waitForExpectations(timeout: 3.0, handler: nil)
     }
     
     func test_rx_annotationsClosureBinding() {
