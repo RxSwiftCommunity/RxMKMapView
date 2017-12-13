@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2B70B86B1F4077E70036CB3C /* DiffTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B70B86A1F4077E70036CB3C /* DiffTests.swift */; };
+		2BFF1FB61FDE6BB400D78709 /* simplemaps-worldcities-basic.csv in Resources */ = {isa = PBXBuildFile; fileRef = 2BFF1FB51FDE6BB400D78709 /* simplemaps-worldcities-basic.csv */; };
 		56AC96251C3ACCC100061156 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56AC96241C3ACCC100061156 /* MapKit.framework */; };
 		56B7C8ED1C3AECE3002DF551 /* RxMKMapViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B7C8EC1C3AECE3002DF551 /* RxMKMapViewTests.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
@@ -33,6 +34,7 @@
 /* Begin PBXFileReference section */
 		1AC9015127B88B5AE775B73F /* Pods_RxMKMapView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxMKMapView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B70B86A1F4077E70036CB3C /* DiffTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiffTests.swift; sourceTree = "<group>"; };
+		2BFF1FB51FDE6BB400D78709 /* simplemaps-worldcities-basic.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "simplemaps-worldcities-basic.csv"; sourceTree = "<group>"; };
 		34399741CF9E72DF0DC8A4C4 /* Pods-RxMKMapView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxMKMapView_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxMKMapView_Tests/Pods-RxMKMapView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		56AC96241C3ACCC100061156 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		56B7C8EC1C3AECE3002DF551 /* RxMKMapViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxMKMapViewTests.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				78E99DC41FA7B24300AE71FD /* RxEel.png */,
+				2BFF1FB51FDE6BB400D78709 /* simplemaps-worldcities-basic.csv */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 			);
@@ -266,6 +269,7 @@
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				78E99DC51FA7B24300AE71FD /* RxEel.png in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
+				2BFF1FB61FDE6BB400D78709 /* simplemaps-worldcities-basic.csv in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

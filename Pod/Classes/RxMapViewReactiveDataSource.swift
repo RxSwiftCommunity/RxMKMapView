@@ -30,5 +30,5 @@ public class RxMapViewReactiveDataSource<S: MKAnnotation>
             }
         }.on(observedEvent)
     }
-    
+
 }
