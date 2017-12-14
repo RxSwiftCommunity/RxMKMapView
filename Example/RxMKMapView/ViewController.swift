@@ -50,13 +50,34 @@ class ViewController: UIViewController {
             })
             .disposed(by: disposeBag)
 
-        mapView.rx.regionDidChangeAnimated
+        let regionAnnotations = mapView.rx.regionDidChangeAnimated
             .map { _ in self.mapView.region }
             .startWith(self.mapView.region)
             .observeOn(MainScheduler.instance)
             .map { region -> [MKAnnotation] in
-                return points.filter(region.contains(poi:))
-            }.bind(to: mapView.rx.annotations)
+            return points.filter(region.contains(poi:))
+        }
+
+        let searchedAnnotations = self.searchBar.rx.text
+            .map {
+                let text = $0?.trimmingCharacters(in: CharacterSet.whitespaces)
+                return text == "" ? nil : text
+            }
+            .map { (text: String?) -> [MKAnnotation]? in
+                return text.map { t in
+                    points.filter { poi -> Bool in
+                        return poi.title?.contains(t) ?? false
+                    }
+                }
+        }
+
+        let visibleAnnotations = Observable
+            .combineLatest(searchedAnnotations, regionAnnotations) {
+                $0 ?? $1
+        }
+
+        visibleAnnotations
+            .bind(to: mapView.rx.annotations)
             .disposed(by: disposeBag)
     }
 
@@ -107,8 +128,6 @@ extension ViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
-
-
 }
 
 class PointOfInterest: NSObject, MKAnnotation {
