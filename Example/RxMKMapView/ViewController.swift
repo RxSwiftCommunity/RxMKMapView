@@ -47,7 +47,8 @@ class ViewController: UIViewController {
             .disposed(by: disposeBag)
 
         mapView.rx.regionDidChangeAnimated
-            .map { _ in mapView.region }
+            .map { _ in self.mapView.region }
+            .startWith(self.mapView.region)
             .observeOn(MainScheduler.instance)
             .map { region -> [MKAnnotation] in
                 return points.filter(region.contains(poi:))
