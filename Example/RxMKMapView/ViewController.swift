@@ -107,6 +107,8 @@ extension ViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
+
+
 }
 
 class PointOfInterest: NSObject, MKAnnotation {
