@@ -16,14 +16,18 @@ class ViewController: UIViewController {
 
     let disposeBag = DisposeBag()
 
+    @IBOutlet weak var mapView: MKMapView!
+
+    @IBOutlet weak var searchBar: UISearchBar!
+
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let points = loadPointsOfInterest()
+        setupKeyboard()
 
-        let mapView = MKMapView(frame: view.frame)
-        mapView.delegate = self
-        view.addSubview(mapView)
+        let points = loadPointsOfInterest()
 
         mapView.rx.willStartLoadingMap
             .asDriver()
@@ -55,6 +59,26 @@ class ViewController: UIViewController {
             }.bind(to: mapView.rx.annotations)
             .disposed(by: disposeBag)
     }
+
+    func setupKeyboard() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyBoardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyBoardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+
+    @objc func keyBoardWillShow(notification: NSNotification) {
+        let frame = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        UIView.animate(withDuration: 0.2) {
+            self.bottomConstraint.constant = frame.height
+            self.view.layoutIfNeeded()
+        }
+    }
+
+    @objc func keyBoardWillHide(notification: NSNotification) {
+        UIView.animate(withDuration: 0.2) {
+            self.bottomConstraint.constant = 0
+            self.view.layoutIfNeeded()
+        }
+    }
 }
 
 extension ViewController: MKMapViewDelegate {
@@ -75,6 +99,13 @@ extension ViewController: MKMapViewDelegate {
                 view.alpha = 1
             }
         })
+    }
+}
+
+extension ViewController: UISearchBarDelegate {
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
 }
 

@@ -20,11 +20,53 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="iu6-3q-TEq">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="u8m-go-kOB"/>
+                                </connections>
+                            </mapView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nvg-6h-O1P">
+                                <rect key="frame" x="0.0" y="611" width="375" height="56"/>
+                                <items>
+                                    <barButtonItem style="plain" id="eMs-AX-2XX">
+                                        <searchBar key="customView" contentMode="redraw" id="qS6-MO-S0J">
+                                            <rect key="frame" x="16" y="0.0" width="343" height="56"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                            <textInputTraits key="textInputTraits" autocorrectionType="yes"/>
+                                            <scopeButtonTitles>
+                                                <string>Title</string>
+                                                <string>Title</string>
+                                            </scopeButtonTitles>
+                                            <connections>
+                                                <outlet property="delegate" destination="vXZ-lx-hvc" id="ikr-JI-sgw"/>
+                                            </connections>
+                                        </searchBar>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="iu6-3q-TEq" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="top" id="2dT-dc-ayj"/>
+                            <constraint firstAttribute="bottom" secondItem="Nvg-6h-O1P" secondAttribute="bottom" id="Fu4-Te-9SU"/>
+                            <constraint firstAttribute="trailing" secondItem="Nvg-6h-O1P" secondAttribute="trailing" id="Gg4-ME-scc"/>
+                            <constraint firstItem="Nvg-6h-O1P" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="N12-E7-fIo"/>
+                            <constraint firstItem="iu6-3q-TEq" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="TPb-SH-RBC"/>
+                            <constraint firstItem="iu6-3q-TEq" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="l9p-Ea-tUj"/>
+                            <constraint firstAttribute="trailing" secondItem="iu6-3q-TEq" secondAttribute="trailing" id="wKs-i2-y4G"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bottomConstraint" destination="Fu4-Te-9SU" id="wp4-fz-m4Q"/>
+                        <outlet property="mapView" destination="iu6-3q-TEq" id="AN2-kU-bqs"/>
+                        <outlet property="searchBar" destination="qS6-MO-S0J" id="Uxd-4f-XZx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="140" y="133.5832083958021"/>
         </scene>
     </scenes>
 </document>
