@@ -16,7 +16,13 @@ import RxMKMapView
 let dummyError = NSError(domain: "com.RxMKMapView.dummyError", code: 0, userInfo: nil)
 
 class RxMKMapViewTests: XCTestCase {
-    
+
+    var disposeBag: DisposeBag! = nil
+
+    override func setUp() {
+        disposeBag = DisposeBag()
+    }
+
     func test_rx_didChangeState() {
         let mapView = MKMapView()
         var resultView: MKAnnotationView?
@@ -363,6 +369,7 @@ class RxMKMapViewTests: XCTestCase {
     }
     
     func test_rx_annotationsArrayBinding() {
+
         let mapView = MKMapView()
         
         let annotation1 = MKPointAnnotation()
@@ -375,8 +382,9 @@ class RxMKMapViewTests: XCTestCase {
         
         let annotations = [annotation1, annotation2]
         
-        _ = Observable.from([annotations])
+        Observable.from([annotations])
             .bind(to: mapView.rx.annotations)
+            .disposed(by: disposeBag)
         
         let exp = self.expectation(description: "wait for annotation")
 
@@ -401,9 +409,10 @@ class RxMKMapViewTests: XCTestCase {
         
         let annotations: [MKAnnotation] = [annotation1, annotation2]
         
-         _ = Observable.of(annotations)
+         Observable.of(annotations)
             .bind(to: mapView.rx.annotations)
-        
+            .disposed(by: disposeBag)
+
         let exp = self.expectation(description: "wait for annotation")
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
