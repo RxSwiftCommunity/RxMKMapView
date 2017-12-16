@@ -19,7 +19,7 @@ public class RxMapViewReactiveDataSource<S: MKAnnotation>
     var currentAnnotations: [S] = []
     
     public func mapView(_ mapView: MKMapView, observedEvent: Event<[S]>) {
-        UIBindingObserver(UIElement: self) { (animator, newAnnotations) in
+        Binder(self) { (animator, newAnnotations) in
             DispatchQueue.main.async {
                 let diff = Diff.calculateFrom(
                     previous: self.currentAnnotations,
