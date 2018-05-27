@@ -76,6 +76,18 @@ class ViewController: UIViewController {
             })
             .disposed(by: disposeBag)
 
+        // Install a forwarding delegate so we can use Rx Delegate Proxy
+        // alongside our regular imperative delegate
+        mapView.rx
+            .setDelegate(self)
+            .disposed(by: disposeBag)
+
+        searchBar.rx
+                 .searchButtonClicked
+                 .observeOn(MainScheduler.instance)
+                 .subscribe(onNext: { [searchBar] in searchBar?.resignFirstResponder() })
+                 .disposed(by: disposeBag)
+
         setupKeyboard()
     }
 
@@ -151,13 +163,6 @@ extension ViewController: MKMapViewDelegate {
                        animations: {
                         views.forEach { $0.alpha = 1.0 }
                        })
-    }
-}
-
-// MARK: - UISearchBar Delegate
-extension ViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
     }
 }
 
