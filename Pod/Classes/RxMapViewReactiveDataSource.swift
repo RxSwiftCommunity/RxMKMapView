@@ -13,13 +13,12 @@ import RxCocoa
 
 public class RxMapViewReactiveDataSource<S: MKAnnotation>
     : RxMapViewDataSourceType {
-    
     public typealias Element = S
-    
+
     var currentAnnotations: [S] = []
-    
+
     public func mapView(_ mapView: MKMapView, observedEvent: Event<[S]>) {
-        Binder(self) { (animator, newAnnotations) in
+        Binder(self) { _, newAnnotations in
             DispatchQueue.main.async {
                 let diff = Diff.calculateFrom(
                     previous: self.currentAnnotations,

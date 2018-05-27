@@ -14,8 +14,7 @@ public struct Diff<T: NSObjectProtocol> {
     public let added: [T]
 }
 
-fileprivate struct BoxedHashable<T: NSObjectProtocol>: Hashable {
-
+private struct BoxedHashable<T: NSObjectProtocol>: Hashable {
     public let value: T
 
     public init(_ value: T) {
@@ -26,32 +25,31 @@ fileprivate struct BoxedHashable<T: NSObjectProtocol>: Hashable {
         return self.value.hash
     }
 
-    public static func ==(lhs: BoxedHashable, rhs: BoxedHashable) -> Bool {
+    public static func == (lhs: BoxedHashable, rhs: BoxedHashable) -> Bool {
         return lhs.value.isEqual(rhs.value)
     }
 }
 
-fileprivate struct Entry<T> {
-
-    public var prev: T? = nil
-    public var next: T? = nil
+private struct Entry<T> {
+    public var prev: T?
+    public var next: T?
 
     func isRemoval() -> Bool {
         return prev != nil && next == nil
     }
+
     func isAddition() -> Bool {
         return prev == nil && next != nil
     }
+
     func value() -> T {
         return (prev ?? next)!
     }
 }
 
 public extension Diff {
-    
     static func calculateFrom(previous: [T], next: [T]) -> Diff<T> {
-        
-        var entries = Dictionary<BoxedHashable<T>, Entry<T>>()
+        var entries = [BoxedHashable<T>: Entry<T>]()
 
         for item in previous {
             var entry = entries[BoxedHashable(item)] ?? Entry()
