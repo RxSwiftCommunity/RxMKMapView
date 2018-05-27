@@ -49,6 +49,12 @@ extension Reactive where Base : MKMapView {
         return ControlEvent(events: source)
     }
 
+    public var region: Observable<MKCoordinateRegion> {
+        return regionDidChangeAnimated
+                .map { [base] _ in base.region }
+                .startWith(base.region)
+    }
+
     // MARK: Loading the Map Data
 
     public var willStartLoadingMap: ControlEvent<Void>{

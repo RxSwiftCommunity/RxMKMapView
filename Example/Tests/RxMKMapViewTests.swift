@@ -28,63 +28,81 @@ class RxMKMapViewTests: XCTestCase {
         var resultView: MKAnnotationView?
         var resultNewState: MKAnnotationViewDragState?
         var resultOldState: MKAnnotationViewDragState?
-        
-        
-        autoreleasepool {
-            _ = mapView.rx.didChangeState
-                .subscribe(onNext: { (view, newState, oldState) -> Void in
-                    resultView = view
-                    resultNewState = newState
-                    resultOldState = oldState
-                })
-            
-            let newState = MKAnnotationViewDragState.starting
-            let oldState = MKAnnotationViewDragState.dragging
-            
-            mapView.delegate!.mapView!(mapView,
-                annotationView: MKAnnotationView(),
-                didChange: newState,
-                fromOldState: oldState)
-            
-            expect(resultView).toNot(beNil())
-            expect(resultNewState).to(equal(newState))
-            expect(resultOldState).to(equal(oldState))
-        }
-        
+
+        _ = mapView.rx.didChangeState
+            .take(1)
+            .subscribe(onNext: { (view, newState, oldState) -> Void in
+                resultView = view
+                resultNewState = newState
+                resultOldState = oldState
+            })
+
+        let newState = MKAnnotationViewDragState.starting
+        let oldState = MKAnnotationViewDragState.dragging
+
+        mapView.delegate!.mapView!(mapView,
+            annotationView: MKAnnotationView(),
+            didChange: newState,
+            fromOldState: oldState)
+
+        expect(resultView).toNot(beNil())
+        expect(resultNewState).to(equal(newState))
+        expect(resultOldState).to(equal(oldState))
     }
     
     func  test_rx_regionWillChangeAnimated() {
         let mapView = MKMapView()
         var changed = false
-        
-        autoreleasepool {
-            
-            _ = mapView.rx.regionWillChangeAnimated
-                .subscribe(onNext: {
-                    changed = $0
-                })
-            
-            mapView.delegate!.mapView!(mapView, regionWillChangeAnimated: true)
-        }
-        
+
+        _ = mapView.rx.regionWillChangeAnimated
+            .take(1)
+            .subscribe(onNext: {
+                changed = $0
+            })
+
+        mapView.delegate!.mapView!(mapView, regionWillChangeAnimated: true)
+
         expect(changed).to(beTrue())
     }
     
     func test_rx_regionDidChangeAnimated() {
         let mapView = MKMapView()
         var changed = false
-        
-        autoreleasepool {
-            
-            _ = mapView.rx.regionDidChangeAnimated
-                .subscribe(onNext: {
-                    changed = $0
-                })
-            
-            mapView.delegate!.mapView!(mapView, regionDidChangeAnimated: true)
-        }
+
+        _ = mapView.rx.regionDidChangeAnimated
+            .take(1)
+            .subscribe(onNext: { animated in
+                changed = animated
+            })
+    
+        mapView.delegate!.mapView!(mapView, regionDidChangeAnimated: true)
         
         expect(changed).to(beTrue())
+    }
+
+    func test_rx_region() {
+        let mapView = MKMapView()
+        var regions = [MKCoordinateRegion]()
+
+        _ = mapView.rx.region
+            .take(2)
+            .subscribe(onNext: { region in
+                regions.append(region)
+            })
+
+        mapView.delegate!.mapView!(mapView, regionDidChangeAnimated: true)
+
+        expect(regions.count) == 2
+
+        expect(regions[0].center.latitude) == mapView.region.center.latitude
+        expect(regions[0].center.longitude) == mapView.region.center.longitude
+        expect(regions[0].span.latitudeDelta) == mapView.region.span.latitudeDelta
+        expect(regions[0].span.longitudeDelta) == mapView.region.span.longitudeDelta
+
+        expect(regions[1].center.latitude) == mapView.region.center.latitude
+        expect(regions[1].center.longitude) == mapView.region.center.longitude
+        expect(regions[1].span.latitudeDelta) == mapView.region.span.latitudeDelta
+        expect(regions[1].span.longitudeDelta) == mapView.region.span.longitudeDelta
     }
     
     func test_rx_willStartLoadingMap() {
