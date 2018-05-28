@@ -18,7 +18,7 @@ func castOrThrow<T>(_ resultType: T.Type, _ object: Any) throws -> T {
     return returnValue
 }
 
-extension Reactive where Base : MKMapView {
+extension Reactive where Base: MKMapView {
 
     /**
      Reactive wrapper for `delegate`.
@@ -49,9 +49,15 @@ extension Reactive where Base : MKMapView {
         return ControlEvent(events: source)
     }
 
+    public var region: Observable<MKCoordinateRegion> {
+        return regionDidChangeAnimated
+                .map { [base] _ in base.region }
+                .startWith(base.region)
+    }
+
     // MARK: Loading the Map Data
 
-    public var willStartLoadingMap: ControlEvent<Void>{
+    public var willStartLoadingMap: ControlEvent<Void> {
         let source = delegate
             .methodInvoked(#selector(MKMapViewDelegate.mapViewWillStartLoadingMap(_:)))
             .map { _ in
@@ -60,7 +66,7 @@ extension Reactive where Base : MKMapView {
         return ControlEvent(events: source)
     }
 
-    public var didFinishLoadingMap: ControlEvent<Void>{
+    public var didFinishLoadingMap: ControlEvent<Void> {
         let source = delegate
             .methodInvoked(#selector(MKMapViewDelegate.mapViewDidFinishLoadingMap(_:)))
             .map { _ in
@@ -69,7 +75,7 @@ extension Reactive where Base : MKMapView {
         return ControlEvent(events: source)
     }
 
-    public var didFailLoadingMap: Observable<NSError>{
+    public var didFailLoadingMap: Observable<NSError> {
         return delegate
             .methodInvoked(#selector(MKMapViewDelegate.mapViewDidFailLoadingMap(_:withError:)))
             .map { a in
@@ -79,7 +85,7 @@ extension Reactive where Base : MKMapView {
 
     // MARK: Responding to Rendering Events
 
-    public var willStartRenderingMap: ControlEvent<Void>{
+    public var willStartRenderingMap: ControlEvent<Void> {
         let source = delegate
             .methodInvoked(#selector(MKMapViewDelegate.mapViewWillStartRenderingMap(_:)))
             .map { _ in
@@ -134,8 +140,7 @@ extension Reactive where Base : MKMapView {
             }
     }
 
-    public var didChangeUserTrackingMode:
-        ControlEvent<(mode: MKUserTrackingMode, animated: Bool)> {
+    public var didChangeUserTrackingMode: ControlEvent<(mode: MKUserTrackingMode, animated: Bool)> {
         let source = delegate
             .methodInvoked(#selector(MKMapViewDelegate.mapView(_:didChange:animated:)))
             .map { a in
@@ -195,8 +200,7 @@ extension Reactive where Base : MKMapView {
         return ControlEvent(events: source)
     }
 
-    public var didChangeState:
-        ControlEvent<(view: MKAnnotationView, newState: MKAnnotationViewDragState, oldState: MKAnnotationViewDragState)> {
+    public var didChangeState: ControlEvent<(view: MKAnnotationView, newState: MKAnnotationViewDragState, oldState: MKAnnotationViewDragState)> {
         let source = delegate
             .methodInvoked(#selector(MKMapViewDelegate.mapView(_:annotationView:didChange:fromOldState:)))
             .map { a in
@@ -226,36 +230,42 @@ extension Reactive where Base : MKMapView {
             }
         return ControlEvent(events: source)
     }
-    
+
     // MARK: Binding annotation to the Map
-    
-    public func annotations<S: Sequence, O: ObservableType> (_ source: O)
-        -> (_ transform: @escaping (S.Iterator.Element) -> MKAnnotation)
-        -> Disposable where O.E == S {
-            
-            return { factory in
-                source.map { elements -> [MKAnnotation] in
-                    elements.map(factory)
-                }
-                .bind(to: self.annotations)
+    public func annotations<
+        A: MKAnnotation,
+        O: ObservableType>
+        (_ source: O)
+        -> Disposable
+        where O.E == [A] {
+            return self.annotations(dataSource: RxMapViewReactiveDataSource())(source)
+    }
+
+    public func annotations<
+        DataSource: RxMapViewDataSourceType,
+        O: ObservableType>
+        (dataSource: DataSource)
+        -> (_ source: O)
+        -> Disposable
+        where O.E == [DataSource.Element],
+        DataSource.Element: MKAnnotation {
+            return { source in
+                return source
+                    .subscribe({ event in
+                        dataSource.mapView(self.base, observedEvent: event)
+                    })
             }
     }
-    
-    public func annotations<O: ObservableType> (_ source: O)
-        -> Disposable where O.E == [MKAnnotation] {
-        return source.subscribe(AnyObserver { event in
-            if case let .next(element) = event {
-                self.base.addAnnotations(element)
-            }
-        })
-    }
-    
-    public func annotations<O: ObservableType> (_ source: O)
-        -> Disposable where O.E: MKAnnotation {
-        return source.subscribe(AnyObserver { event in
-            if case let .next(element) = event {
-                self.base.addAnnotation(element)
-            }
-        })
+
+    /// Installs delegate as forwarding delegate on `delegate`.
+    /// Delegate won't be retained.
+    ///
+    /// It enables using normal delegate mechanism with reactive delegate mechanism.
+    ///
+    /// - parameter delegate: Delegate object.
+    /// - returns: Disposable object that can be used to unbind the delegate.
+    public func setDelegate(_ delegate: MKMapViewDelegate)
+        -> Disposable {
+        return RxMKMapViewDelegateProxy.installForwardDelegate(delegate, retainDelegate: false, onProxyForObject: self.base)
     }
 }

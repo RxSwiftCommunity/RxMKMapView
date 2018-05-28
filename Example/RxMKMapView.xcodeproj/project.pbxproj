@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B70B86B1F4077E70036CB3C /* DiffTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B70B86A1F4077E70036CB3C /* DiffTests.swift */; };
+		2BFF1FB61FDE6BB400D78709 /* simplemaps-worldcities-basic.csv in Resources */ = {isa = PBXBuildFile; fileRef = 2BFF1FB51FDE6BB400D78709 /* simplemaps-worldcities-basic.csv */; };
 		56AC96251C3ACCC100061156 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56AC96241C3ACCC100061156 /* MapKit.framework */; };
 		56B7C8ED1C3AECE3002DF551 /* RxMKMapViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B7C8EC1C3AECE3002DF551 /* RxMKMapViewTests.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
@@ -31,6 +33,8 @@
 
 /* Begin PBXFileReference section */
 		1AC9015127B88B5AE775B73F /* Pods_RxMKMapView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxMKMapView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B70B86A1F4077E70036CB3C /* DiffTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiffTests.swift; sourceTree = "<group>"; };
+		2BFF1FB51FDE6BB400D78709 /* simplemaps-worldcities-basic.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "simplemaps-worldcities-basic.csv"; sourceTree = "<group>"; };
 		34399741CF9E72DF0DC8A4C4 /* Pods-RxMKMapView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxMKMapView_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxMKMapView_Tests/Pods-RxMKMapView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		56AC96241C3ACCC100061156 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		56B7C8EC1C3AECE3002DF551 /* RxMKMapViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxMKMapViewTests.swift; sourceTree = "<group>"; };
@@ -103,6 +107,7 @@
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				78E99DC41FA7B24300AE71FD /* RxEel.png */,
+				2BFF1FB51FDE6BB400D78709 /* simplemaps-worldcities-basic.csv */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 			);
@@ -123,6 +128,7 @@
 			children = (
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 				56B7C8EC1C3AECE3002DF551 /* RxMKMapViewTests.swift */,
+				2B70B86A1F4077E70036CB3C /* DiffTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -178,7 +184,6 @@
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
 				3CB83E4EE2EE45D88BE66987 /* [CP] Embed Pods Frameworks */,
-				67595FF204280614CD01AD8A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -198,7 +203,6 @@
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
 				5FDCC9C67C2E2DA5868DDD1E /* [CP] Embed Pods Frameworks */,
-				2AD35196711EDFCF139DFD3B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -217,7 +221,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
@@ -263,6 +267,7 @@
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				78E99DC51FA7B24300AE71FD /* RxEel.png in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
+				2BFF1FB61FDE6BB400D78709 /* simplemaps-worldcities-basic.csv in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,21 +298,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		2AD35196711EDFCF139DFD3B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RxMKMapView_Tests/Pods-RxMKMapView_Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		3CB83E4EE2EE45D88BE66987 /* [CP] Embed Pods Frameworks */ = {
@@ -358,21 +348,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RxMKMapView_Tests/Pods-RxMKMapView_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		67595FF204280614CD01AD8A /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RxMKMapView_Example/Pods-RxMKMapView_Example-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		E88712B599F8750FE564E47F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -407,6 +382,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B70B86B1F4077E70036CB3C /* DiffTests.swift in Sources */,
 				56B7C8ED1C3AECE3002DF551 /* RxMKMapViewTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -453,12 +429,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -506,12 +484,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

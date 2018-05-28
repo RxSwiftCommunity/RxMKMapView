@@ -1,25 +1,66 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="RxMKMapView_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="iu6-3q-TEq">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </mapView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nvg-6h-O1P">
+                                <rect key="frame" x="0.0" y="611" width="375" height="56"/>
+                                <items>
+                                    <barButtonItem style="plain" id="eMs-AX-2XX">
+                                        <searchBar key="customView" contentMode="redraw" id="qS6-MO-S0J">
+                                            <rect key="frame" x="16" y="0.0" width="343" height="56"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                            <textInputTraits key="textInputTraits" autocorrectionType="yes"/>
+                                            <scopeButtonTitles>
+                                                <string>Title</string>
+                                                <string>Title</string>
+                                            </scopeButtonTitles>
+                                        </searchBar>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="iu6-3q-TEq" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="top" id="2dT-dc-ayj"/>
+                            <constraint firstAttribute="bottom" secondItem="Nvg-6h-O1P" secondAttribute="bottom" id="Fu4-Te-9SU"/>
+                            <constraint firstAttribute="trailing" secondItem="Nvg-6h-O1P" secondAttribute="trailing" id="Gg4-ME-scc"/>
+                            <constraint firstItem="Nvg-6h-O1P" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="N12-E7-fIo"/>
+                            <constraint firstItem="iu6-3q-TEq" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="TPb-SH-RBC"/>
+                            <constraint firstItem="iu6-3q-TEq" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="l9p-Ea-tUj"/>
+                            <constraint firstAttribute="trailing" secondItem="iu6-3q-TEq" secondAttribute="trailing" id="wKs-i2-y4G"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bottomConstraint" destination="Fu4-Te-9SU" id="wp4-fz-m4Q"/>
+                        <outlet property="mapView" destination="iu6-3q-TEq" id="AN2-kU-bqs"/>
+                        <outlet property="searchBar" destination="qS6-MO-S0J" id="Uxd-4f-XZx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="140" y="133.5832083958021"/>
         </scene>
     </scenes>
 </document>

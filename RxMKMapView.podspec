@@ -53,7 +53,7 @@ DESC
   s.author           = { 'Spiros Gerokostas' => 'spiros.gerokostas@gmail.com' }
   s.source           = { :git => 'https://github.com/RxSwiftCommunity/RxMKMapView.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/sger'
-
+  s.swift_version = '4.0'
   s.platform     = :ios, '8.0'
   s.requires_arc = true
 
