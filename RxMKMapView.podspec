@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'RxMKMapView'
-  s.version          = '4.0.0'
+  s.version          = '4.1.0'
   s.summary          = 'Reactive wrapper for MKMapView `delegate`'
   s.description      = <<-DESC
 RxMKMapView is a Reactive wrapper for MKMapView `delegate`.
@@ -25,11 +25,16 @@ pod "RxMKMapView"
 ## Example Usages
 
 ```swift
-
 // MARK: Setup MKMapView
-
 let mapView = MKMapView(frame: view.frame)
 view.addSubview(mapView)
+
+// MARK: Bind Annotations
+
+requestForAnnotations() // Observable<MKAnnotation>
+    .asDriver(onErrorJustReturn: [])
+    .drive(mapView.rx.annotations)
+    .disposed(by: disposeBag)
 
 // MARK: Respond to Loading Events
 mapView.rx.willStartLoadingMap
@@ -50,7 +55,7 @@ DESC
 
   s.homepage         = 'https://github.com/RxSwiftCommunity/RxMKMapView'
   s.license          = 'MIT'
-  s.author           = { 'Spiros Gerokostas' => 'spiros.gerokostas@gmail.com' }
+  s.author           = { 'RxSwift Community' => 'community@rxswift.org' }
   s.source           = { :git => 'https://github.com/RxSwiftCommunity/RxMKMapView.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/sger'
   s.swift_version = '4.0'
