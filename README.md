@@ -1,7 +1,7 @@
 RxMKMapView
 ===
 
-RxMKMapView is a [RxSwift](https://github.com/ReactiveX/RxSwift) wrapper for MKMapView (MapKit) `delegate`.
+RxMKMapView is a [RxSwift](https://github.com/ReactiveX/RxSwift) wrapper for MKMapView (MapKit) `delegate` providing a Reactive Delegate Proxy as well as a bindable annotations interface to dynamically change the "data source" of your map.
 
 [![CircleCI](https://circleci.com/gh/RxSwiftCommunity/RxMKMapView.svg?style=svg)](https://circleci.com/gh/RxSwiftCommunity/RxMKMapView)
 [![Version](https://img.shields.io/cocoapods/v/RxMKMapView.svg?style=flat)](http://cocoapods.org/pods/RxMKMapView)
@@ -31,11 +31,17 @@ github "RxSwiftCommunity/RxMKMapView"
 ## Example Usages
 
 ```swift
-
 // MARK: Setup MKMapView
 
 let mapView = MKMapView(frame: view.frame)
 view.addSubview(mapView)
+
+// MARK: Bind Annotations
+
+requestForAnnotations() // Observable<MKAnnotation>
+    .asDriver(onErrorJustReturn: [])
+    .drive(mapView.rx.annotations)
+    .disposed(by: disposeBag)
 
 // MARK: Respond to Loading Events
 mapView.rx.willStartLoadingMap
