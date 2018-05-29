@@ -38,12 +38,13 @@ view.addSubview(mapView)
 
 // MARK: Bind Annotations
 
-requestForAnnotations() // Observable<MKAnnotation>
+requestForAnnotations() // Observable<[MyMapAnnotation]>
     .asDriver(onErrorJustReturn: [])
     .drive(mapView.rx.annotations)
     .disposed(by: disposeBag)
 
 // MARK: Respond to Loading Events
+
 mapView.rx.willStartLoadingMap
        .asDriver()
        .drive(onNext: {
