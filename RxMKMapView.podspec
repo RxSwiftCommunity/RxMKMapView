@@ -53,16 +53,15 @@ mapView.rx.didFinishLoadingMap
 ```
 DESC
 
-  s.homepage         = 'https://github.com/RxSwiftCommunity/RxMKMapView'
-  s.license          = 'MIT'
-  s.author           = { 'RxSwift Community' => 'community@rxswift.org' }
-  s.source           = { :git => 'https://github.com/RxSwiftCommunity/RxMKMapView.git', :tag => s.version.to_s }
-  s.social_media_url = 'https://twitter.com/sger'
-  s.swift_version = '4.0'
-  s.platform     = :ios, '8.0'
-  s.requires_arc = true
+  s.homepage            = 'https://github.com/RxSwiftCommunity/RxMKMapView'
+  s.license             = 'MIT'
+  s.author              = { 'RxSwift Community' => 'community@rxswift.org' }
+  s.source              = { :git => 'https://github.com/RxSwiftCommunity/RxMKMapView.git', :tag => s.version.to_s }
+  s.swift_version       = '4.0'
+  s.platform            = :ios, '8.0'
+  s.requires_arc        = true
 
-  s.source_files = 'Pod/Classes/**/*'
+  s.source_files        = 'Sources/**/*.swift'
 
   s.dependency 'RxCocoa', '~> 4.0'
   s.dependency 'RxSwift', '~> 4.0'

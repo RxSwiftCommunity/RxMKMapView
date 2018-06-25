@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0900"
+   LastUpgradeVersion = "0940"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "572142021DD7A3C000FC5B15"
+               BlueprintIdentifier = "2B58CA5020E0F6C500D521A9"
                BuildableName = "RxMKMapView.framework"
                BlueprintName = "RxMKMapView"
                ReferencedContainer = "container:RxMKMapView.xcodeproj">
@@ -28,7 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2B58CA5920E0F6C600D521A9"
+               BuildableName = "RxMKMapViewTests.xctest"
+               BlueprintName = "RxMKMapViewTests"
+               ReferencedContainer = "container:RxMKMapView.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "2B58CA5020E0F6C500D521A9"
+            BuildableName = "RxMKMapView.framework"
+            BlueprintName = "RxMKMapView"
+            ReferencedContainer = "container:RxMKMapView.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -45,7 +64,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "572142021DD7A3C000FC5B15"
+            BlueprintIdentifier = "2B58CA5020E0F6C500D521A9"
             BuildableName = "RxMKMapView.framework"
             BlueprintName = "RxMKMapView"
             ReferencedContainer = "container:RxMKMapView.xcodeproj">
@@ -63,7 +82,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "572142021DD7A3C000FC5B15"
+            BlueprintIdentifier = "2B58CA5020E0F6C500D521A9"
             BuildableName = "RxMKMapView.framework"
             BlueprintName = "RxMKMapView"
             ReferencedContainer = "container:RxMKMapView.xcodeproj">
