@@ -12,21 +12,10 @@
 		2B0E685F20E13B0800C07827 /* Diff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0E685920E13B0800C07827 /* Diff.swift */; };
 		2B0E686120E13B0800C07827 /* RxMapViewDataSourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0E685B20E13B0800C07827 /* RxMapViewDataSourceType.swift */; };
 		2B0E686220E13B0800C07827 /* MKMapView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0E685C20E13B0800C07827 /* MKMapView+Rx.swift */; };
-		2B58CA5B20E0F6C600D521A9 /* RxMKMapView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B58CA5120E0F6C500D521A9 /* RxMKMapView.framework */; };
 		2B58CA6220E0F6C600D521A9 /* RxMKMapView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B58CA5420E0F6C500D521A9 /* RxMKMapView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2B58CA7B20E0F86800D521A9 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B58CA7920E0F86700D521A9 /* RxSwift.framework */; };
 		2B58CA7C20E0F86800D521A9 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B58CA7A20E0F86800D521A9 /* RxCocoa.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		2B58CA5C20E0F6C600D521A9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2B58CA4820E0F6C500D521A9 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2B58CA5020E0F6C500D521A9;
-			remoteInfo = RxMKMapView;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2B0E685720E13B0800C07827 /* RxMKMapViewDelegateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxMKMapViewDelegateProxy.swift; sourceTree = "<group>"; };
@@ -37,7 +26,6 @@
 		2B58CA5120E0F6C500D521A9 /* RxMKMapView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxMKMapView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B58CA5420E0F6C500D521A9 /* RxMKMapView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RxMKMapView.h; sourceTree = "<group>"; };
 		2B58CA5520E0F6C500D521A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2B58CA5A20E0F6C600D521A9 /* RxMKMapViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxMKMapViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B58CA7920E0F86700D521A9 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		2B58CA7A20E0F86800D521A9 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -49,14 +37,6 @@
 			files = (
 				2B58CA7B20E0F86800D521A9 /* RxSwift.framework in Frameworks */,
 				2B58CA7C20E0F86800D521A9 /* RxCocoa.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2B58CA5720E0F6C600D521A9 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2B58CA5B20E0F6C600D521A9 /* RxMKMapView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,7 +68,6 @@
 			isa = PBXGroup;
 			children = (
 				2B58CA5120E0F6C500D521A9 /* RxMKMapView.framework */,
-				2B58CA5A20E0F6C600D521A9 /* RxMKMapViewTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -144,24 +123,6 @@
 			productReference = 2B58CA5120E0F6C500D521A9 /* RxMKMapView.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		2B58CA5920E0F6C600D521A9 /* RxMKMapViewTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2B58CA6820E0F6C600D521A9 /* Build configuration list for PBXNativeTarget "RxMKMapViewTests" */;
-			buildPhases = (
-				2B58CA5620E0F6C600D521A9 /* Sources */,
-				2B58CA5720E0F6C600D521A9 /* Frameworks */,
-				2B58CA5820E0F6C600D521A9 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				2B58CA5D20E0F6C600D521A9 /* PBXTargetDependency */,
-			);
-			name = RxMKMapViewTests;
-			productName = RxMKMapViewTests;
-			productReference = 2B58CA5A20E0F6C600D521A9 /* RxMKMapViewTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -173,9 +134,6 @@
 				ORGANIZATIONNAME = RxSwiftCommunity;
 				TargetAttributes = {
 					2B58CA5020E0F6C500D521A9 = {
-						CreatedOnToolsVersion = 9.4;
-					};
-					2B58CA5920E0F6C600D521A9 = {
 						CreatedOnToolsVersion = 9.4;
 					};
 				};
@@ -193,20 +151,12 @@
 			projectRoot = "";
 			targets = (
 				2B58CA5020E0F6C500D521A9 /* RxMKMapView */,
-				2B58CA5920E0F6C600D521A9 /* RxMKMapViewTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		2B58CA4F20E0F6C500D521A9 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2B58CA5820E0F6C600D521A9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -228,22 +178,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2B58CA5620E0F6C600D521A9 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		2B58CA5D20E0F6C600D521A9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2B58CA5020E0F6C500D521A9 /* RxMKMapView */;
-			targetProxy = 2B58CA5C20E0F6C600D521A9 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		2B58CA6320E0F6C600D521A9 /* Debug */ = {
@@ -424,42 +359,6 @@
 			};
 			name = Release;
 		};
-		2B58CA6920E0F6C600D521A9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = RxMKMapViewTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.rxswift.community.RxMKMapViewTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		2B58CA6A20E0F6C600D521A9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = RxMKMapViewTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.rxswift.community.RxMKMapViewTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -477,15 +376,6 @@
 			buildConfigurations = (
 				2B58CA6620E0F6C600D521A9 /* Debug */,
 				2B58CA6720E0F6C600D521A9 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2B58CA6820E0F6C600D521A9 /* Build configuration list for PBXNativeTarget "RxMKMapViewTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2B58CA6920E0F6C600D521A9 /* Debug */,
-				2B58CA6A20E0F6C600D521A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
