@@ -62,7 +62,7 @@ mapView.rx.didFinishLoadingMap
 
 ## Requirements
 
-RxMKMapView requires Swift 4.0 and RxSwift (4.0).
+RxMKMapView requires Swift 4.3 and RxSwift (4.3).
 
 ## License
 

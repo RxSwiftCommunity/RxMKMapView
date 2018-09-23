@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		005884702157A99C0044018C /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B58CA7A20E0F86800D521A9 /* RxCocoa.framework */; };
+		005884712157A99C0044018C /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B58CA7920E0F86700D521A9 /* RxSwift.framework */; };
 		2B0E685D20E13B0800C07827 /* RxMKMapViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0E685720E13B0800C07827 /* RxMKMapViewDelegateProxy.swift */; };
 		2B0E685E20E13B0800C07827 /* RxMapViewReactiveDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0E685820E13B0800C07827 /* RxMapViewReactiveDataSource.swift */; };
 		2B0E685F20E13B0800C07827 /* Diff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0E685920E13B0800C07827 /* Diff.swift */; };
 		2B0E686120E13B0800C07827 /* RxMapViewDataSourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0E685B20E13B0800C07827 /* RxMapViewDataSourceType.swift */; };
 		2B0E686220E13B0800C07827 /* MKMapView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0E685C20E13B0800C07827 /* MKMapView+Rx.swift */; };
 		2B58CA6220E0F6C600D521A9 /* RxMKMapView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B58CA5420E0F6C500D521A9 /* RxMKMapView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2B58CA7B20E0F86800D521A9 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B58CA7920E0F86700D521A9 /* RxSwift.framework */; };
-		2B58CA7C20E0F86800D521A9 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B58CA7A20E0F86800D521A9 /* RxCocoa.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,8 +35,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B58CA7B20E0F86800D521A9 /* RxSwift.framework in Frameworks */,
-				2B58CA7C20E0F86800D521A9 /* RxCocoa.framework in Frameworks */,
+				005884702157A99C0044018C /* RxCocoa.framework in Frameworks */,
+				005884712157A99C0044018C /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
