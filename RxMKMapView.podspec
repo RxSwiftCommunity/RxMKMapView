@@ -57,7 +57,6 @@ DESC
   s.license             = 'MIT'
   s.author              = { 'RxSwift Community' => 'community@rxswift.org' }
   s.source              = { :git => 'https://github.com/RxSwiftCommunity/RxMKMapView.git', :tag => s.version.to_s }
-  s.swift_version       = '4.2'
   s.platform            = :ios, '8.0'
   s.requires_arc        = true
 
