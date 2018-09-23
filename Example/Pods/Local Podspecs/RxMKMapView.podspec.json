@@ -12,7 +12,6 @@
     "git": "https://github.com/RxSwiftCommunity/RxMKMapView.git",
     "tag": "4.3.0"
   },
-  "swift_version": "4.2",
   "platforms": {
     "ios": "8.0"
   },
