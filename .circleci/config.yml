@@ -21,7 +21,11 @@ jobs:
       - save_cache:
           key: v1-dep-{{ .Branch }}-{{ epoch }}
           paths:
+            - ~/.cocoapods
             - Carthage
+      - run:
+          name: Install Example Dependencies
+          command: pod deintegrate --project-directory=Example/ && pod install --project-directory=Example/
       - run:
           name: Run Tests
           command: set -o pipefail && xcodebuild -workspace 'Example/RxMKMapView.xcworkspace' -scheme 'RxMKMapView-Example' -configuration 'Debug' -destination 'platform=iOS Simulator,name=iPhone 8' -sdk iphonesimulator build test | xcpretty -c --test
