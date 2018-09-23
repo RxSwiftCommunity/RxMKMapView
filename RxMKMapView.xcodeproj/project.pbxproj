@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		005884702157A99C0044018C /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B58CA7A20E0F86800D521A9 /* RxCocoa.framework */; };
-		005884712157A99C0044018C /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B58CA7920E0F86700D521A9 /* RxSwift.framework */; };
+		007F0D722157C5290069F24C /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B58CA7A20E0F86800D521A9 /* RxCocoa.framework */; };
+		007F0D732157C52D0069F24C /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B58CA7920E0F86700D521A9 /* RxSwift.framework */; };
 		2B0E685D20E13B0800C07827 /* RxMKMapViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0E685720E13B0800C07827 /* RxMKMapViewDelegateProxy.swift */; };
 		2B0E685E20E13B0800C07827 /* RxMapViewReactiveDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0E685820E13B0800C07827 /* RxMapViewReactiveDataSource.swift */; };
 		2B0E685F20E13B0800C07827 /* Diff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0E685920E13B0800C07827 /* Diff.swift */; };
@@ -35,8 +35,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				005884702157A99C0044018C /* RxCocoa.framework in Frameworks */,
-				005884712157A99C0044018C /* RxSwift.framework in Frameworks */,
+				007F0D722157C5290069F24C /* RxCocoa.framework in Frameworks */,
+				007F0D732157C52D0069F24C /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
