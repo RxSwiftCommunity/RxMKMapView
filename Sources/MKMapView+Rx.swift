@@ -200,7 +200,7 @@ extension Reactive where Base: MKMapView {
         return ControlEvent(events: source)
     }
 
-    public var didChangeState: ControlEvent<(view: MKAnnotationView, newState: MKAnnotationViewDragState, oldState: MKAnnotationViewDragState)> {
+    public var didChangeState: ControlEvent<(view: MKAnnotationView, newState: MKAnnotationView.DragState, oldState: MKAnnotationView.DragState)> {
         let source = delegate
             .methodInvoked(#selector(MKMapViewDelegate.mapView(_:annotationView:didChange:fromOldState:)))
             .map { a in
@@ -210,8 +210,8 @@ extension Reactive where Base: MKMapView {
             }
             .map { (view, newState, oldState) in
                 return (view: view,
-                    newState: MKAnnotationViewDragState(rawValue: newState)!,
-                    oldState: MKAnnotationViewDragState(rawValue: oldState)!)
+                    newState: MKAnnotationView.DragState(rawValue: newState)!,
+                    oldState: MKAnnotationView.DragState(rawValue: oldState)!)
             }
         return ControlEvent(events: source)
     }
