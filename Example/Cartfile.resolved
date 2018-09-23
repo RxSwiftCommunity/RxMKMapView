@@ -1,1 +1,2 @@
-github "victorg1991/RxMKMapView" "3.0.0"
+github "ReactiveX/RxSwift" "4.3.1"
+github "RxSwiftCommunity/RxMKMapView" "4.3.0"
