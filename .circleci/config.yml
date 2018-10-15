@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/RxSwiftCommunity/RxMKMapView
     parallelism: 1
-    shell: /bin/bash --login
+    shell: /bin/bash --login -o pipefail
     environment:
       LANG: en_US.UTF-8
     macos:
@@ -34,10 +34,10 @@ jobs:
             - Carthage
       - run:
           name: Run Tests
-          command: set -o pipefail && xcodebuild -workspace 'Example/RxMKMapView.xcworkspace' -scheme 'RxMKMapView-Example' -configuration 'Debug' CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY= PROVISIONING_PROFILE= -destination 'platform=iOS Simulator,name=iPhone 8' clean build test | tee '/tmp/xcode-test-artifacts/tests.log' | xcpretty --color --no-utf -r junit -o 'test-results/test.xml'
+          command: xcodebuild -workspace 'Example/RxMKMapView.xcworkspace' -scheme 'RxMKMapView-Example' -configuration 'Debug' CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY= PROVISIONING_PROFILE= -destination 'platform=iOS Simulator,name=iPhone 8' clean build test | tee '/tmp/xcode-test-artifacts/tests.log' | xcpretty --color --no-utf -r junit -o 'test-results/test.xml'
       - run:
           name: Build Framework Workspace
-          command: set -o pipefail && xcodebuild -workspace 'RxMKMapView.xcworkspace' -scheme 'RxMKMapView' -configuration 'Debug' CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY= PROVISIONING_PROFILE= -destination 'platform=iOS Simulator,name=iPhone 8' clean build | tee '/tmp/xcode-test-artifacts/build.log' | xcpretty -c
+          command: xcodebuild -workspace 'RxMKMapView.xcworkspace' -scheme 'RxMKMapView' -configuration 'Debug' CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY= PROVISIONING_PROFILE= -destination 'platform=iOS Simulator,name=iPhone 8' clean build | tee '/tmp/xcode-test-artifacts/build.log' | xcpretty -c
       - store_test_results:
           path: test-results
       - store_artifacts:
