@@ -31,7 +31,6 @@ jobs:
       - save_cache:
           key: v1-dep-{{ .Branch }}-{{ epoch }}
           paths:
-            - Example/Pods
             - Carthage
       - run:
           name: Run Tests
