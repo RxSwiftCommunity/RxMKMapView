@@ -18,9 +18,17 @@ jobs:
       - run: 
           name: Bootstrap Carthage
           command: scripts/bootstrap-if-needed.sh
+      - run:
+          name: Fetch CocoaPods Specs
+          command: |
+            curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
+      - run:
+          name: Install CocoaPods
+          command: pod install --project-directory=Example/
       - save_cache:
           key: v1-dep-{{ .Branch }}-{{ epoch }}
           paths:
+            - Example/Pods
             - Carthage
       - run:
           name: Run Tests
