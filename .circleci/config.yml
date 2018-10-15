@@ -15,6 +15,9 @@ jobs:
             - v1-dep-{{ .Branch }}-
             - v1-dep-master-
             - v1-dep-
+      - run:
+          name: Create artifacts paths
+          command: mkdir test-results ; mkdir /tmp/xcode-test-artifacts
       - run: 
           name: Bootstrap Carthage
           command: scripts/bootstrap-if-needed.sh
@@ -32,11 +35,11 @@ jobs:
             - Carthage
       - run:
           name: Run Tests
-          command: set -o pipefail && xcodebuild -workspace 'Example/RxMKMapView.xcworkspace' -scheme 'RxMKMapView-Example' -configuration 'Debug' CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY= PROVISIONING_PROFILE= -destination 'platform=iOS Simulator,name=iPhone 8' build test | xcpretty -c --test
+          command: set -o pipefail && xcodebuild -workspace 'Example/RxMKMapView.xcworkspace' -scheme 'RxMKMapView-Example' -configuration 'Debug' CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY= PROVISIONING_PROFILE= -destination 'platform=iOS Simulator,name=iPhone 8' build test | tee '/tmp/xcode-test-artifacts/tests.log' | xcpretty --color --no-utf -r junit -o 'test-results/test.xml'
       - run:
           name: Build Framework Workspace
-          command: set -o pipefail && xcodebuild -workspace 'RxMKMapView.xcworkspace' -scheme 'RxMKMapView' -configuration 'Debug' CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY= PROVISIONING_PROFILE= -destination 'platform=iOS Simulator,name=iPhone 8' build | xcpretty -c
+          command: set -o pipefail && xcodebuild -workspace 'RxMKMapView.xcworkspace' -scheme 'RxMKMapView' -configuration 'Debug' CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY= PROVISIONING_PROFILE= -destination 'platform=iOS Simulator,name=iPhone 8' build | tee '/tmp/xcode-test-artifacts/build.log' | xcpretty -c
       - store_test_results:
           path: test-results
       - store_artifacts:
-          path: /tmp/xcode-test-artifcats
+          path: /tmp/xcode-test-artifacts
