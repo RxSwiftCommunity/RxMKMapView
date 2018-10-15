@@ -10,11 +10,11 @@ jobs:
       xcode: '10.0.0'
     steps:
       - checkout
-      # - restore_cache:
-      #     keys:
-      #       - v1-dep-{{ .Branch }}-
-      #       - v1-dep-master-
-      #       - v1-dep-
+      - restore_cache:
+          keys:
+            - v1-dep-{{ .Branch }}-
+            - v1-dep-master-
+            - v1-dep-
       - run:
           name: Create artifacts paths
           command: mkdir -p /tmp/test-results /tmp/xcode-test-artifacts
