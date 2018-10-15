@@ -17,7 +17,7 @@ jobs:
       #       - v1-dep-
       - run:
           name: Create artifacts paths
-          command: mkdir -p test-results /tmp/xcode-test-artifacts
+          command: mkdir -p /tmp/test-results /tmp/xcode-test-artifacts
       - run: 
           name: Bootstrap Carthage
           command: scripts/bootstrap-if-needed.sh
@@ -27,11 +27,11 @@ jobs:
             - Carthage
       - run:
           name: Run Tests
-          command: xcodebuild -workspace 'Example/RxMKMapView.xcworkspace' -scheme 'RxMKMapView-Example' -configuration 'Debug' CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY= PROVISIONING_PROFILE= -destination 'platform=iOS Simulator,name=iPhone 8' clean build test | tee '/tmp/xcode-test-artifacts/tests.log' | xcpretty --color --no-utf -r junit -o 'test-results/test.xml'
+          command: xcodebuild -workspace 'Example/RxMKMapView.xcworkspace' -scheme 'RxMKMapView-Example' -configuration 'Debug' CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY= PROVISIONING_PROFILE= -destination 'platform=iOS Simulator,name=iPhone 8' clean build test | tee '/tmp/xcode-test-artifacts/tests.log' | xcpretty --color --no-utf -r junit -o '/tmp/test-results/test.xml'
       - run:
           name: Build Framework Workspace
           command: xcodebuild -workspace 'RxMKMapView.xcworkspace' -scheme 'RxMKMapView' -configuration 'Debug' CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY= PROVISIONING_PROFILE= -destination 'platform=iOS Simulator,name=iPhone 8' clean build | tee '/tmp/xcode-test-artifacts/build.log' | xcpretty -c
       - store_test_results:
-          path: test-results
+          path: /tmp/test-results
       - store_artifacts:
           path: /tmp/xcode-test-artifacts
