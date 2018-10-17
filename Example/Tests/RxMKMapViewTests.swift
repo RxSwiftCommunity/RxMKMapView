@@ -26,8 +26,13 @@ class RxMKMapViewTests: XCTestCase {
     func test_rx_didChangeState() {
         let mapView = MKMapView()
         var resultView: MKAnnotationView?
+        #if swift(>=4.2)
+        var resultNewState: MKAnnotationView.DragState?
+        var resultOldState: MKAnnotationView.DragState?
+        #else
         var resultNewState: MKAnnotationViewDragState?
         var resultOldState: MKAnnotationViewDragState?
+        #endif
 
         _ = mapView.rx.didChangeState
             .take(1)
@@ -37,9 +42,14 @@ class RxMKMapViewTests: XCTestCase {
                 resultOldState = oldState
             })
 
+        #if swift(>=4.2)
+        let newState = MKAnnotationView.DragState.starting
+        let oldState = MKAnnotationView.DragState.dragging
+        #else
         let newState = MKAnnotationViewDragState.starting
         let oldState = MKAnnotationViewDragState.dragging
-
+        #endif
+        
         mapView.delegate!.mapView!(mapView,
             annotationView: MKAnnotationView(),
             didChange: newState,
