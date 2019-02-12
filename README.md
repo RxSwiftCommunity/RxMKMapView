@@ -48,7 +48,7 @@ requestForAnnotations() // Observable<[MyMapAnnotation]>
 mapView.rx.willStartLoadingMap
        .asDriver()
        .drive(onNext: {
-           print("map started loadedloading)
+           print("map started loadedloading")
        })
        .disposed(by: disposeBag)
 
@@ -62,7 +62,7 @@ mapView.rx.didFinishLoadingMap
 
 ## Requirements
 
-RxMKMapView requires Swift 4.0 and RxSwift (4.3).
+RxMKMapView requires Swift 4.0 and RxSwift (4.4).
 
 ## License
 
