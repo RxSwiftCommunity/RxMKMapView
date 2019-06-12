@@ -243,7 +243,7 @@ extension Reactive where Base: MKMapView {
         O: ObservableType>
         (_ source: O)
         -> Disposable
-        where O.E == [A] {
+        where O.Element == [A] {
             return self.annotations(dataSource: RxMapViewReactiveAnnotationDataSource())(source)
     }
 
@@ -253,7 +253,7 @@ extension Reactive where Base: MKMapView {
         (dataSource: DataSource)
         -> (_ source: O)
         -> Disposable
-        where O.E == [DataSource.Element],
+        where O.Element == [DataSource.Element],
         DataSource.Element: MKAnnotation {
             return { source in
                 return source
@@ -269,7 +269,7 @@ extension Reactive where Base: MKMapView {
     O: ObservableType>
     (_ source: O)
     -> Disposable
-    where O.E == [A] {
+    where O.Element == [A] {
       return self.overlays(dataSource: RxMapViewReactiveOverlayDataSource())(source)
   }
   
@@ -279,7 +279,7 @@ extension Reactive where Base: MKMapView {
     (dataSource: DataSource)
     -> (_ source: O)
     -> Disposable
-    where O.E == [DataSource.Element],
+    where O.Element == [DataSource.Element],
     DataSource.Element: MKOverlay {
       return { source in
         return source
