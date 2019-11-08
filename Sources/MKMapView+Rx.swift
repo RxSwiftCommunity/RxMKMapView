@@ -300,32 +300,32 @@ extension Reactive where Base: MKMapView {
             }
     }
 
-  // MARK: Binding overlay to the Map
-  public func overlays<
-    A: MKOverlay,
-    O: ObservableType>
-    (_ source: O)
-    -> Disposable
-    where O.Element == [A] {
-      return self.overlays(dataSource: RxMapViewReactiveOverlayDataSource())(source)
-  }
-  
-  public func overlays<
-    DataSource: RxMapViewDataSourceType,
-    O: ObservableType>
-    (dataSource: DataSource)
-    -> (_ source: O)
-    -> Disposable
-    where O.Element == [DataSource.Element],
-    DataSource.Element: MKOverlay {
-      return { source in
-        return source
-          .subscribe({ event in
-            dataSource.mapView(self.base, observedEvent: event)
-          })
-      }
-  }
-  
+    // MARK: Binding overlay to the Map
+    public func overlays<
+        A: MKOverlay,
+        O: ObservableType>
+        (_ source: O)
+        -> Disposable
+        where O.Element == [A] {
+            return self.overlays(dataSource: RxMapViewReactiveOverlayDataSource())(source)
+    }
+
+    public func overlays<
+        DataSource: RxMapViewDataSourceType,
+        O: ObservableType>
+        (dataSource: DataSource)
+        -> (_ source: O)
+        -> Disposable
+        where O.Element == [DataSource.Element],
+        DataSource.Element: MKOverlay {
+            return { source in
+                return source
+                    .subscribe({ event in
+                        dataSource.mapView(self.base, observedEvent: event)
+                    })
+            }
+    }
+
     /// Installs delegate as forwarding delegate on `delegate`.
     /// Delegate won't be retained.
     ///
