@@ -21,5 +21,7 @@ let package = Package(
         .target(
             name: "RxMKMapView",
             dependencies: ["RxSwift", "RxCocoa"]),
+            path: "ReMVVMExt/Sources",
+            exclude: [])
     ]
 )
