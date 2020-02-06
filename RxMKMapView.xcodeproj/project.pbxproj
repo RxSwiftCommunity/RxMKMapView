@@ -28,6 +28,7 @@
 		2B58CA5520E0F6C500D521A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B58CA7920E0F86700D521A9 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		2B58CA7A20E0F86800D521A9 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		3720A4BC23EBBDA4000DE8E6 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +76,7 @@
 		2B58CA5320E0F6C500D521A9 /* RxMKMapView */ = {
 			isa = PBXGroup;
 			children = (
+				3720A4BC23EBBDA4000DE8E6 /* Package.swift */,
 				2B0E685620E13B0800C07827 /* Sources */,
 				2B58CA5420E0F6C500D521A9 /* RxMKMapView.h */,
 				2B58CA5520E0F6C500D521A9 /* Info.plist */,
@@ -145,7 +147,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-        Base,
+				Base,
 			);
 			mainGroup = 2B58CA4720E0F6C500D521A9;
 			productRefGroup = 2B58CA5220E0F6C500D521A9 /* Products */;
