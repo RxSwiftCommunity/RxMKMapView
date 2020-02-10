@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "Package",
+    name: "RxMKMapView",
     platforms: [.iOS(.v10)],
     products: [
         .library(
