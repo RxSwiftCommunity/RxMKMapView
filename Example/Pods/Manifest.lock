@@ -4,7 +4,7 @@ PODS:
   - RxCocoa (5.0.0):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
-  - RxMKMapView (5.0.0):
+  - RxMKMapView (5.0.1):
     - RxCocoa (~> 5.0)
     - RxSwift (~> 5.0)
   - RxRelay (5.0.0):
@@ -32,7 +32,7 @@ SPEC CHECKSUMS:
   Nimble: 45f786ae66faa9a709624227fae502db55a8bdd0
   Quick: 4be43f6634acfa727dd106bdf3929ce125ffa79d
   RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
-  RxMKMapView: 7b19fc545887314851ea67b12193bc8c6004dcb5
+  RxMKMapView: 2dda0dce35c645c624995df59a5ff9ce66843b78
   RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
   RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
 
