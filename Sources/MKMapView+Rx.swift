@@ -55,6 +55,14 @@ extension Reactive where Base: MKMapView {
                 .startWith(base.region)
     }
 
+    @available(iOS 11.0, *)
+    public var didChangeVisibleRegion: ControlEvent<Void> {
+        let source = delegate
+            .methodInvoked(#selector(MKMapViewDelegate.mapViewDidChangeVisibleRegion(_:)))
+            .map { _ in }
+        return ControlEvent(events: source)
+    }
+
     // MARK: Loading the Map Data
 
     public var willStartLoadingMap: ControlEvent<Void> {
