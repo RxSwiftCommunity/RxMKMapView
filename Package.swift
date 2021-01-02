@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "RxMKMapView",
-    platforms: [.iOS(.v8)],
+    platforms: [.iOS(.v9)],
     products: [
         .library(
             name: "RxMKMapView",
@@ -14,7 +14,7 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/ReactiveX/RxSwift",
-            .upToNextMajor(from: "5.0.1")
+            .upToNextMajor(from: "6.0.0")
         )
     ],
     targets: [
