@@ -21,7 +21,7 @@ jobs:
     - name: Test and Lint
       uses: ty0x2333/cocoapods-action@master
       env: 
-        PHONE_ID: $(instruments -s devices | grep -m 1 'iPhone 8' | awk -F'[][]' '{print $2}')
+        PHONE_ID: ${{ instruments -s devices | grep -m 1 'iPhone 8' | awk -F'[][]' '{print $2}' }}
       with:
         additional_build_params: -destination 'platform=iOS Simulator,id=$PHONE_ID'
         additional_lint_params: --allow-warnings
