@@ -64,5 +64,5 @@ DESC
 
   s.dependency 'RxCocoa', '~> 6.0'
   s.dependency 'RxSwift', '~> 6.0'
-  s.frameworks = 'Foundation'
+  s.frameworks = 'Foundation', 'MapKit'
 end
