@@ -21,5 +21,5 @@ jobs:
     - name: Test and Lint
       uses: ty0x2333/cocoapods-action@master
       with:
-        additional_build_params: -destination 'platform=iOS Simulator,id=F37D3091-C3D4-4652-859D-901F18F2AF8D'
+        additional_build_params: -destination 'platform=iOS Simulator,id=`instruments -s devices | grep "iPhone 8" | awk -F'[][]' '{print $2}`'
         additional_lint_params: --allow-warnings
