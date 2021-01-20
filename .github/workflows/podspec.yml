@@ -1,0 +1,25 @@
+name: Test And Lint Podspec
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install Dependences
+      run: |
+        cd Example
+        pod repo update
+        pod install
+      shell: bash
+    - name: Test and Lint
+      uses: ty0x2333/cocoapods-action@master
+      with:
+        additional_build_params: -destination 'platform=iOS Simulator,name=iPhone 11,OS=14.0'
+        additional_lint_params: --private
