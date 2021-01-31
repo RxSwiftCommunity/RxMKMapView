@@ -84,7 +84,7 @@ class ViewController: UIViewController {
 
         searchBar.rx
                  .searchButtonClicked
-                 .observeOn(MainScheduler.instance)
+                 .observe(on: MainScheduler.instance)
                  .subscribe(onNext: { [searchBar] in searchBar?.resignFirstResponder() })
                  .disposed(by: disposeBag)
 
