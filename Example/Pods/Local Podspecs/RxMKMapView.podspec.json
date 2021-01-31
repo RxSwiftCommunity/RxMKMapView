@@ -25,5 +25,8 @@
       "~> 6.0"
     ]
   },
-  "frameworks": "Foundation"
+  "frameworks": [
+    "Foundation",
+    "MapKit"
+  ]
 }
