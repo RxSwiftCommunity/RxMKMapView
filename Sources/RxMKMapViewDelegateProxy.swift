@@ -29,3 +29,19 @@ class RxMKMapViewDelegateProxy: DelegateProxy<MKMapView, MKMapViewDelegate>, Del
         self.register { RxMKMapViewDelegateProxy(mapView: $0) }
     }
 }
+
+class RxMapViewAnnotationViewBuilderDelegate<A: MKAnnotation>: NSObject, MKMapViewDelegate {
+    typealias AnnotationViewBuilder = (MKMapView, A) -> MKAnnotationView
+    private let annotationViewBuilder: AnnotationViewBuilder
+    init(annotationViewBuilder: @escaping AnnotationViewBuilder) {
+        self.annotationViewBuilder = annotationViewBuilder
+    }
+
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard let typedAnnotation = annotation as? A else {
+            // Just let the system handle this
+            return nil
+        }
+        return annotationViewBuilder(mapView, typedAnnotation)
+    }
+}

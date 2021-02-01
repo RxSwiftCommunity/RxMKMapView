@@ -255,6 +255,43 @@ extension Reactive where Base: MKMapView {
             return self.annotations(dataSource: RxMapViewReactiveAnnotationDataSource())(source)
     }
 
+    /*
+     Show annotations on map, with a AnnotationViewBuilder defining how they should be rendered
+
+     - parameter source: Observable sequence of items.
+     - parameter annotationViewBuilder: Transform between sequence elements and MKAnnotationView
+     - returns: Disposable object that can be used to unbind.
+
+      Example:
+
+
+          requestForAnnotations() // Observable<[MyMapAnnotation]>
+              .asDriver(onErrorJustReturn: [])
+              .drive(mapView.rx.annotations) { (mapView, annotation) in
+                  return mapView.dequeueReusableAnnotationView(withIdentifier: "MyMapAnnotationView", for: annotation)
+              }
+              .disposed(by: disposeBag)
+     */
+    public func annotations<
+        A: MKAnnotation,
+        O: ObservableType>
+        (_ source: O) ->
+        (_ annotationViewBuilder: @escaping (MKMapView, A) -> MKAnnotationView) -> Disposable
+        where O.Element == [A] {
+            return { annotationViewBuilder in
+                let delegate = RxMapViewAnnotationViewBuilderDelegate(annotationViewBuilder: annotationViewBuilder)
+                let retainDelegate = Disposables.create {
+                    _ = delegate
+                }
+                return CompositeDisposable(disposables: [
+                    retainDelegate,
+                    self.setDelegate(delegate),
+                    self.annotations(source)
+                ])
+            }
+    }
+
+
     public func annotations<
         DataSource: RxMapViewDataSourceType,
         O: ObservableType>
@@ -271,32 +308,32 @@ extension Reactive where Base: MKMapView {
             }
     }
 
-  // MARK: Binding overlay to the Map
-  public func overlays<
-    A: MKOverlay,
-    O: ObservableType>
-    (_ source: O)
-    -> Disposable
-    where O.Element == [A] {
-      return self.overlays(dataSource: RxMapViewReactiveOverlayDataSource())(source)
-  }
-  
-  public func overlays<
-    DataSource: RxMapViewDataSourceType,
-    O: ObservableType>
-    (dataSource: DataSource)
-    -> (_ source: O)
-    -> Disposable
-    where O.Element == [DataSource.Element],
-    DataSource.Element: MKOverlay {
-      return { source in
-        return source
-          .subscribe({ event in
-            dataSource.mapView(self.base, observedEvent: event)
-          })
-      }
-  }
-  
+    // MARK: Binding overlay to the Map
+    public func overlays<
+        A: MKOverlay,
+        O: ObservableType>
+        (_ source: O)
+        -> Disposable
+        where O.Element == [A] {
+            return self.overlays(dataSource: RxMapViewReactiveOverlayDataSource())(source)
+    }
+
+    public func overlays<
+        DataSource: RxMapViewDataSourceType,
+        O: ObservableType>
+        (dataSource: DataSource)
+        -> (_ source: O)
+        -> Disposable
+        where O.Element == [DataSource.Element],
+        DataSource.Element: MKOverlay {
+            return { source in
+                return source
+                    .subscribe({ event in
+                        dataSource.mapView(self.base, observedEvent: event)
+                    })
+            }
+    }
+
     /// Installs delegate as forwarding delegate on `delegate`.
     /// Delegate won't be retained.
     ///
