@@ -165,12 +165,9 @@ extension Reactive where Base: MKMapView {
     // MARK: Responding to Annotation Views
 
     public var didAddAnnotationViews: ControlEvent<[MKAnnotationView]> {
+        let selector = Selector("mapView:didAddAnnotationViews:")
         let source = delegate
-            .methodInvoked(#selector(
-                (MKMapViewDelegate.mapView(_:didAdd:))!
-                    as (MKMapViewDelegate) -> (MKMapView, [MKAnnotationView]) -> Void
-                )
-            )
+            .methodInvoked(selector)
             .map { a in
                 return try castOrThrow([MKAnnotationView].self, a[1])
             }
@@ -233,12 +230,9 @@ extension Reactive where Base: MKMapView {
     // MARK: Managing the Display of Overlays
 
     public var didAddOverlayRenderers: ControlEvent<[MKOverlayRenderer]> {
+        let selector = Selector("mapView:didAddOverlayRenderers:")
         let source = delegate
-            .methodInvoked(#selector(
-                (MKMapViewDelegate.mapView(_:didAdd:))!
-                    as (MKMapViewDelegate) -> (MKMapView, [MKOverlayRenderer]) -> Void
-                )
-            )
+            .methodInvoked(selector)
             .map { a in
                 return try castOrThrow([MKOverlayRenderer].self, a[1])
             }
