@@ -199,8 +199,12 @@ extension Reactive where Base: MKMapView {
     // MARK: Selecting Annotation Views
 
     public var didSelectAnnotationView: ControlEvent<MKAnnotationView> {
+        let selector = #selector(
+            (MKMapViewDelegate.mapView(_:didSelect:))
+            as (MKMapViewDelegate) -> ((MKMapView, MKAnnotationView) -> Void)?
+        )
         let source = delegate
-            .methodInvoked(#selector(MKMapViewDelegate.mapView(_:didSelect:)))
+            .methodInvoked(selector)
             .map { a in
                 return try castOrThrow(MKAnnotationView.self, a[1])
             }
@@ -208,8 +212,13 @@ extension Reactive where Base: MKMapView {
     }
 
     public var didDeselectAnnotationView: ControlEvent<MKAnnotationView> {
+        let selector = #selector(
+            (MKMapViewDelegate.mapView(_:didDeselect:))
+            as (MKMapViewDelegate) -> ((MKMapView, MKAnnotationView) -> Void)?
+        )
+        
         let source = delegate
-            .methodInvoked(#selector(MKMapViewDelegate.mapView(_:didDeselect:)))
+            .methodInvoked(selector)
             .map { a in
                 return try castOrThrow(MKAnnotationView.self, a[1])
             }
